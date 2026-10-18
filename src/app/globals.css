@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ivory: #F7F5F0;
+  --color-sand: #E9E2D7;
+  --color-sage: #86A58C;
+  --color-sage-dark: #6F8E75;
+  --color-sage-light: #A1BCAB;
+  --color-champagne: #B69A72;
+  --color-espresso: #28231F;
+  --color-taupe: #82786E;
+  --color-white: #FFFFFF;
+
+  --font-heading: var(--font-cormorant);
+  --font-body: var(--font-dm-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #F7F5F0;
+  color: #28231F;
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+::selection {
+  background-color: #86A58C;
+  color: #FFFFFF;
+}
+
+/* Subtle luxury scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F5F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4C5B0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #86A58C;
+}
+
+/* Accessible focus ring in brand sage */
+*:focus-visible {
+  outline: 2px solid #86A58C;
+  outline-offset: 3px;
+}
+
+/* Editorial line decorations */
+.hairline-b {
+  border-bottom: 1px solid rgba(40, 35, 31, 0.08);
+}
+
+.hairline-t {
+  border-top: 1px solid rgba(40, 35, 31, 0.08);
+}
+
+.hairline-l {
+  border-left: 1px solid rgba(40, 35, 31, 0.08);
+}
+
+.hairline-r {
+  border-right: 1px solid rgba(40, 35, 31, 0.08);
+}
+
+.hairline-dark-b {
+  border-bottom: 1px solid rgba(247, 245, 240, 0.12);
+}
+
+.hairline-dark-t {
+  border-top: 1px solid rgba(247, 245, 240, 0.12);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
