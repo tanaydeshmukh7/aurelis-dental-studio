@@ -66,7 +66,7 @@ async function runAcceptanceVerification() {
   const testToken = await signSession({
     userId: adminUser.id,
     email: adminUser.email,
-    fullName: adminUser.name,
+    fullName: adminUser.fullName,
     role: "SUPER_ADMIN",
   });
   const verified = await verifySession(testToken);

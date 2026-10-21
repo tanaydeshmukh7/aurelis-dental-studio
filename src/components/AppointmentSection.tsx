@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle2, AlertCircle, Shield, Calendar, Clock, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { Send, CheckCircle2, AlertCircle, Shield, Calendar, Clock, Sparkles, ArrowUpRight } from "lucide-react";
 import { TREATMENTS } from "@/data/treatments";
 
 interface AppointmentSectionProps {
@@ -125,14 +126,24 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
               </div>
 
               <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-espresso font-normal tracking-tight">
-                Let&apos;s talk about <br />
-                <span className="italic font-light">your smile.</span>
+                Your smile deserves <br />
+                <span className="italic font-light">thoughtful care.</span>
               </h2>
 
               <p className="mt-6 text-base sm:text-lg text-taupe leading-relaxed">
-                Tell us a little about your needs, and our team can help you
-                understand the next step.
+                Take the first step toward a more confident, comfortable dental experience.
+                Reserve a private consultation at our Koregaon Park studio.
               </p>
+
+              <div className="mt-4 flex items-center gap-3">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] font-medium text-espresso hover:text-sage transition-colors border-b border-espresso/20 pb-0.5"
+                >
+                  <span>Or Contact Our Concierge Team</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-sage" />
+                </Link>
+              </div>
 
               {/* Clinic Standards */}
               <div className="mt-10 space-y-4 border-t border-espresso/10 pt-8">

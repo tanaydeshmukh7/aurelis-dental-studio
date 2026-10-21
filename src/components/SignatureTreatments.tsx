@@ -31,12 +31,12 @@ export default function SignatureTreatments({
             <div className="flex items-center gap-2.5 mb-3">
               <span className="w-5 h-[1.5px] bg-sage" />
               <span className="text-[11px] tracking-[0.25em] text-taupe uppercase font-semibold">
-                WHAT WE DO
+                CLINICAL DISCIPLINES
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-espresso font-normal tracking-tight">
-              Considered care. <br className="hidden sm:block" />
-              <span className="italic font-light">Confident smiles.</span>
+              Care that fits <br className="hidden sm:block" />
+              <span className="italic font-light">your smile.</span>
             </h2>
           </div>
           <div className="mt-4 md:mt-0 flex flex-col items-start md:items-end gap-3">
@@ -48,7 +48,7 @@ export default function SignatureTreatments({
               href="/treatments"
               className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] font-medium text-espresso hover:text-sage-dark transition-colors border-b border-espresso/20 pb-0.5"
             >
-              <span>Explore All 5 Protocols</span>
+              <span>Explore All 5 Disciplines</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-sage" />
             </Link>
           </div>
@@ -65,7 +65,7 @@ export default function SignatureTreatments({
                 sizes="(max-width: 1024px) 100vw, 700px"
                 className="object-cover group-hover:scale-105 transition-transform duration-700 filter saturate-[0.95]"
               />
-              <div className="absolute top-5 left-5 bg-ivory/95 backdrop-blur-sm px-3.5 py-1 text-[11px] font-serif italic text-espresso border border-espresso/10">
+              <div className="absolute top-5 left-5 bg-white/95 backdrop-blur-sm px-3.5 py-1 text-[11px] font-serif italic text-espresso border border-espresso/10">
                 Signature Aesthetic Care
               </div>
             </div>
@@ -93,13 +93,21 @@ export default function SignatureTreatments({
                 </div>
               </div>
 
-              <button
-                onClick={() => setSelectedTreatment(t1)}
-                className="group/btn inline-flex items-center justify-between w-full pt-4 border-t border-espresso/10 text-xs uppercase tracking-[0.2em] font-medium text-espresso hover:text-sage-dark transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sage"
-              >
-                <span>Explore Treatment</span>
-                <ArrowUpRight className="w-4 h-4 text-sage group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-              </button>
+              <div className="flex items-center gap-4 pt-4 border-t border-espresso/10">
+                <Link
+                  href={`/treatments/${t1.slug}`}
+                  className="px-5 py-2.5 bg-sage hover:bg-sage-dark text-white text-xs uppercase tracking-[0.18em] transition-colors shadow-sm"
+                >
+                  View Protocol
+                </Link>
+                <button
+                  onClick={() => setSelectedTreatment(t1)}
+                  className="group/btn inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] font-medium text-espresso hover:text-sage-dark transition-colors"
+                >
+                  <span>Quick Overview</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-sage group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -135,13 +143,21 @@ export default function SignatureTreatments({
               </p>
             </div>
 
-            <button
-              onClick={() => setSelectedTreatment(t2)}
-              className="group/btn inline-flex items-center justify-between w-full pt-4 border-t border-espresso/10 text-xs uppercase tracking-[0.2em] font-medium text-espresso hover:text-sage-dark transition-colors"
-            >
-              <span>Explore Treatment</span>
-              <ArrowUpRight className="w-4 h-4 text-sage group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-            </button>
+            <div className="flex items-center justify-between pt-4 border-t border-espresso/10">
+              <Link
+                href={`/treatments/${t2.slug}`}
+                className="text-xs uppercase tracking-[0.18em] font-medium text-espresso hover:text-sage-dark transition-colors inline-flex items-center gap-1"
+              >
+                <span>View Protocol</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-sage" />
+              </Link>
+              <button
+                onClick={() => setSelectedTreatment(t2)}
+                className="text-xs text-taupe hover:text-espresso underline"
+              >
+                Preview Details
+              </button>
+            </div>
           </div>
 
           {/* 03 Clear Aligners */}
@@ -172,13 +188,21 @@ export default function SignatureTreatments({
               </p>
             </div>
 
-            <button
-              onClick={() => setSelectedTreatment(t3)}
-              className="group/btn inline-flex items-center justify-between w-full pt-4 border-t border-espresso/10 text-xs uppercase tracking-[0.2em] font-medium text-espresso hover:text-sage-dark transition-colors"
-            >
-              <span>Explore Treatment</span>
-              <ArrowUpRight className="w-4 h-4 text-sage group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-            </button>
+            <div className="flex items-center justify-between pt-4 border-t border-espresso/10">
+              <Link
+                href={`/treatments/${t3.slug}`}
+                className="text-xs uppercase tracking-[0.18em] font-medium text-espresso hover:text-sage-dark transition-colors inline-flex items-center gap-1"
+              >
+                <span>View Protocol</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-sage" />
+              </Link>
+              <button
+                onClick={() => setSelectedTreatment(t3)}
+                className="text-xs text-taupe hover:text-espresso underline"
+              >
+                Preview Details
+              </button>
+            </div>
           </div>
 
         </div>
@@ -203,12 +227,13 @@ export default function SignatureTreatments({
               {t4.shortDesc}
             </div>
             <div className="lg:col-span-2 flex justify-start lg:justify-end">
-              <button
-                onClick={() => setSelectedTreatment(t4)}
-                className="group/btn inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-medium text-espresso hover:text-sage-dark transition-colors px-4 py-2 border border-espresso/20 hover:border-sage"
+              <Link
+                href={`/treatments/${t4.slug}`}
+                className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] font-medium text-espresso hover:text-white hover:bg-sage transition-all px-4 py-2 border border-espresso/20 hover:border-sage"
               >
-                <span>Explore ↗</span>
-              </button>
+                <span>View Protocol</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
 
@@ -229,12 +254,13 @@ export default function SignatureTreatments({
               {t5.shortDesc}
             </div>
             <div className="lg:col-span-2 flex justify-start lg:justify-end">
-              <button
-                onClick={() => setSelectedTreatment(t5)}
-                className="group/btn inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-medium text-espresso hover:text-sage-dark transition-colors px-4 py-2 border border-espresso/20 hover:border-sage"
+              <Link
+                href={`/treatments/${t5.slug}`}
+                className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] font-medium text-espresso hover:text-white hover:bg-sage transition-all px-4 py-2 border border-espresso/20 hover:border-sage"
               >
-                <span>Explore ↗</span>
-              </button>
+                <span>View Protocol</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
 
