@@ -1,14 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { Star, Quote, CheckCircle2, ShieldCheck } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Star, Quote, CheckCircle2, ShieldCheck, AlertCircle } from "lucide-react";
 import SiteNavbar from "@/components/navigation/SiteNavbar";
 import SiteFooter from "@/components/common/SiteFooter";
 import PageHero from "@/components/common/PageHero";
 import { DEMO_TESTIMONIALS } from "@/data/testimonials";
 
 export default function ReviewsPage() {
+  const [testimonials, setTestimonials] = useState(DEMO_TESTIMONIALS);
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [feedbackForm, setFeedbackForm] = useState({
     name: "",
     treatment: "Smile Design",
@@ -16,10 +19,48 @@ export default function ReviewsPage() {
     comments: "",
   });
 
-  const handleFeedbackSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    fetch("/api/public/content")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.reviews && data.reviews.length > 0) {
+          setTestimonials(data.reviews);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const handleFeedbackSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (feedbackForm.name.trim() && feedbackForm.comments.trim()) {
+    if (!feedbackForm.name.trim() || !feedbackForm.comments.trim()) return;
+
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/public/review", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          author: feedbackForm.name,
+          treatment: feedbackForm.treatment,
+          rating: feedbackForm.rating,
+          text: feedbackForm.comments,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setErrorMessage(data.error || "Failed to submit reflection. Please try again.");
+        setIsSubmitting(false);
+        return;
+      }
+
       setFeedbackSubmitted(true);
+    } catch {
+      setErrorMessage("Network error while submitting reflection.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -56,7 +97,7 @@ export default function ReviewsPage() {
         <section className="py-20 sm:py-28 bg-ivory">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
-              {DEMO_TESTIMONIALS.map((item) => (
+              {testimonials.map((item: any) => (
                 <div
                   key={item.id}
                   className="bg-sand/20 border border-espresso/10 p-8 sm:p-10 flex flex-col justify-between shadow-subtle group hover:border-sage/40 transition-colors"
@@ -65,7 +106,7 @@ export default function ReviewsPage() {
                     <div className="flex items-center justify-between mb-6">
                       {/* 5 Stars in Champagne */}
                       <div className="flex items-center gap-1 text-champagne">
-                        {[...Array(item.rating)].map((_, i) => (
+                        {[...Array(item.rating || 5)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-champagne stroke-champagne" />
                         ))}
                       </div>
@@ -78,7 +119,7 @@ export default function ReviewsPage() {
                     <Quote className="w-8 h-8 text-sage/40 mb-4" />
 
                     <blockquote className="font-serif text-xl sm:text-2xl text-espresso font-light leading-snug tracking-tight">
-                      &ldquo;{item.quote}&rdquo;
+                      &ldquo;{item.quote || item.text}&rdquo;
                     </blockquote>
                   </div>
 
@@ -87,11 +128,11 @@ export default function ReviewsPage() {
                       <p className="font-serif text-base text-espresso font-normal">
                         {item.author}
                       </p>
-                      <p className="text-[11px]">{item.location}</p>
+                      <p className="text-[11px]">{item.location || "Pune"}</p>
                     </div>
 
                     <span className="text-[11px] font-serif italic text-taupe/80">
-                      Visit Year: {item.year}
+                      Visit Year: {item.year || "2026"}
                     </span>
                   </div>
                 </div>
@@ -100,7 +141,7 @@ export default function ReviewsPage() {
           </div>
         </section>
 
-        {/* Feedback Demo Section */}
+        {/* Feedback Section */}
         <section className="py-20 bg-sand/30 border-t border-espresso/10">
           <div className="max-w-3xl mx-auto px-5 sm:px-8 bg-ivory p-8 sm:p-12 border border-espresso/10 shadow-card">
             <div className="text-center mb-8">
@@ -115,16 +156,23 @@ export default function ReviewsPage() {
               </p>
             </div>
 
+            {errorMessage && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                <span>{errorMessage}</span>
+              </div>
+            )}
+
             {feedbackSubmitted ? (
               <div className="py-8 text-center space-y-4 animate-fade-in">
                 <div className="w-12 h-12 rounded-full bg-sage/15 mx-auto flex items-center justify-center text-sage">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
                 <h3 className="font-serif text-2xl text-espresso">
-                  Thank you for your feedback.
+                  Thank you for your feedback, {feedbackForm.name}.
                 </h3>
                 <p className="text-xs text-taupe max-w-sm mx-auto">
-                  Your comments have been recorded for clinical director review (Demo submission).
+                  Your comments have been recorded for clinical director review and moderation.
                 </p>
                 <button
                   onClick={() => setFeedbackSubmitted(false)}
@@ -192,9 +240,10 @@ export default function ReviewsPage() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full py-3.5 bg-sage hover:bg-sage-dark active:bg-sage-dark text-white text-xs uppercase tracking-[0.2em] font-medium transition-colors shadow-sage"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 bg-sage hover:bg-sage-dark active:bg-sage-dark text-white text-xs uppercase tracking-[0.2em] font-medium transition-colors shadow-sage flex items-center justify-center"
                   >
-                    Submit Visit Reflection (Demo)
+                    {isSubmitting ? "Submitting Reflection..." : "Submit Visit Reflection"}
                   </button>
                 </div>
               </form>

@@ -4,7 +4,9 @@ import { ArrowUpRight, CheckCircle2, Clock } from "lucide-react";
 import SiteNavbar from "@/components/navigation/SiteNavbar";
 import SiteFooter from "@/components/common/SiteFooter";
 import PageHero from "@/components/common/PageHero";
-import { TREATMENTS } from "@/data/treatments";
+import Breadcrumbs from "@/components/common/Breadcrumbs";
+import { TREATMENTS, Treatment } from "@/data/treatments";
+import { prisma } from "@/lib/prisma";
 
 export const metadata = {
   title: "Clinical Disciplines & Treatments | AURELIS Dental Studio Pune",
@@ -12,7 +14,40 @@ export const metadata = {
     "Explore our five signature restorative and cosmetic dental treatments in Koregaon Park, Pune. Precision aesthetics rooted in biological tooth preservation.",
 };
 
-export default function TreatmentsOverviewPage() {
+async function getTreatments(): Promise<Treatment[]> {
+  try {
+    const list = await prisma.treatmentService.findMany({
+      where: { isActive: true },
+      orderBy: { displayOrder: "asc" },
+    });
+    if (list && list.length > 0) {
+      return list.map((t) => ({
+        id: t.id,
+        slug: t.slug,
+        number: t.number,
+        title: t.title,
+        tagline: t.tagline,
+        shortDesc: t.shortDesc,
+        fullDesc: t.fullDesc,
+        image: t.image,
+        imageAlt: t.imageAlt,
+        heroImage: t.heroImage,
+        supportingImages: JSON.parse(t.supportingImagesJson || "[]") as string[],
+        suitability: JSON.parse(t.suitabilityJson || "[]") as string[],
+        benefits: JSON.parse(t.benefitsJson || "[]") as string[],
+        timeline: t.timeline,
+        approach: JSON.parse(t.approachJson || "[]") as string[],
+        procedureStages: JSON.parse(t.procedureStagesJson || "[]") as { stage: string; title: string; description: string }[],
+        idealFor: t.idealFor,
+        faqs: JSON.parse(t.faqsJson || "[]") as { question: string; answer: string }[],
+      }));
+    }
+  } catch {}
+  return TREATMENTS;
+}
+
+export default async function TreatmentsOverviewPage() {
+  const treatments = await getTreatments();
   return (
     <div className="min-h-screen bg-ivory text-espresso flex flex-col">
       <SiteNavbar />
@@ -66,7 +101,7 @@ export default function TreatmentsOverviewPage() {
         {/* Detailed 5 Signature Treatments Stack */}
         <section className="py-20 sm:py-28 bg-ivory">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-20">
-            {TREATMENTS.map((treatment, idx) => (
+            {treatments.map((treatment, idx) => (
               <div
                 key={treatment.id}
                 id={treatment.slug}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { X } from "lucide-react";
@@ -10,13 +10,25 @@ import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { GALLERY_ITEMS, GALLERY_CATEGORIES, GalleryItem } from "@/data/gallery";
 
 export default function GalleryPage() {
+  const [items, setItems] = useState<GalleryItem[]>(GALLERY_ITEMS);
   const [activeCategory, setActiveCategory] = useState<string>("All Spaces");
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryItem | null>(null);
 
+  useEffect(() => {
+    fetch("/api/public/content")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.gallery && data.gallery.length > 0) {
+          setItems(data.gallery);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const filteredItems = useMemo(() => {
-    if (activeCategory === "All Spaces") return GALLERY_ITEMS;
-    return GALLERY_ITEMS.filter((item) => item.category === activeCategory);
-  }, [activeCategory]);
+    if (activeCategory === "All Spaces") return items;
+    return items.filter((item) => item.category === activeCategory);
+  }, [activeCategory, items]);
 
   return (
     <div className="min-h-screen bg-ivory text-espresso flex flex-col">

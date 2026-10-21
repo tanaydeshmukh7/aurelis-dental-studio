@@ -58,21 +58,44 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [referenceId, setReferenceId] = useState<string | null>(null);
+  const [serverError, setServerError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setServerError(null);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
+    try {
+      const res = await fetch("/api/public/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setServerError(data.error || "Failed to schedule appointment. Please call our concierge.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      setReferenceId(data.referenceId);
       setSubmittedData({ ...formData });
-    }, 1000);
+      setIsSubmitted(true);
+    } catch {
+      setServerError("Network error while submitting your consultation request. Please try again or call reception.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
     setIsSubmitted(false);
+    setReferenceId(null);
+    setServerError(null);
     setFormData({
       fullName: "",
       phone: "",
@@ -180,15 +203,12 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
           {/* Right Column: Appointment Form */}
           <div className="lg:col-span-7 bg-ivory p-6 sm:p-10 lg:p-12 border border-espresso/10 shadow-card">
             
-            {/* Clear Demo Submission Notice */}
-            <div className="mb-6 p-3.5 bg-sand/40 border border-espresso/10 flex items-center justify-between text-xs text-taupe">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 text-sage shrink-0" />
-                <span>
-                  <strong>Interactive Demo Flow:</strong> Validates in-browser without sending unsolicited external messages.
-                </span>
+            {serverError && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                <span>{serverError}</span>
               </div>
-            </div>
+            )}
 
             {isSubmitted && submittedData ? (
               <div className="py-8 text-center space-y-6 animate-fade-in">
@@ -197,18 +217,23 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-[11px] uppercase tracking-[0.25em] text-sage-dark font-semibold">
-                    Request Received (Demo Notice)
+                  <span className="text-[11px] uppercase tracking-[0.25em] text-sage font-semibold">
+                    Consultation Request Confirmed
                   </span>
                   <h3 className="font-serif text-3xl sm:text-4xl text-espresso font-normal">
                     Thank you, {submittedData.fullName}.
                   </h3>
                   <p className="text-sm text-taupe max-w-md mx-auto leading-relaxed">
-                    This demonstrates the validated client booking flow. In production, this
-                    form connects to your clinic WhatsApp Business API, CRM, or backend
-                    scheduling webhook.
+                    Your appointment request has been logged directly into our clinical management system.
+                    Our concierge coordinator will contact you via phone or WhatsApp to finalize your private operatory reservation.
                   </p>
                 </div>
+
+                {referenceId && (
+                  <div className="inline-block px-4 py-2 bg-[#F7F5F0] border border-[#86A58C] text-[#28231F] font-mono text-sm font-semibold rounded-lg">
+                    Reservation Ref: {referenceId}
+                  </div>
+                )}
 
                 <div className="p-5 bg-sand/20 border border-espresso/10 text-left text-xs space-y-2 max-w-md mx-auto text-espresso/90">
                   <p><strong>Selected Discipline:</strong> {submittedData.treatment}</p>

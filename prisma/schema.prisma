@@ -1,0 +1,500 @@
+// AURELIS Dental Studio - Prisma Database Schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// -------------------------------------------------------------
+// 1. AUTHENTICATION & PERSONNEL (RBAC)
+// -------------------------------------------------------------
+model User {
+  id                  String           @id @default(cuid())
+  email               String           @unique
+  passwordHash        String
+  fullName            String
+  role                String           // SUPER_ADMIN, CLINIC_ADMIN, DENTIST, RECEPTIONIST, ACCOUNTANT, CONTENT_EDITOR
+  phone               String?
+  avatar              String?
+  specialization      String?
+  licenseNumber       String?
+  isActive            Boolean          @default(true)
+  mustChangePassword  Boolean          @default(false)
+  lastLoginAt         DateTime?
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+
+  dentistAppointments Appointment[]    @relation("DentistAppointments")
+  dentistSchedules    DentistSchedule[]
+  dentistLeaves       DentistLeave[]
+  clinicalNotes       ClinicalNote[]   @relation("DentistNotes")
+  treatmentPlans      TreatmentPlan[]  @relation("DentistTreatmentPlans")
+  prescriptions       Prescription[]   @relation("DentistPrescriptions")
+  recordedPayments    Payment[]        @relation("RecordedPayments")
+  expenses            Expense[]        @relation("CreatedExpenses")
+  stockMovements      StockMovement[]  @relation("RecordedMovements")
+  notifications       Notification[]
+  auditLogs           AuditLog[]       @relation("ActorAuditLogs")
+  assignedLeads       LeadEnquiry[]    @relation("AssignedLeads")
+}
+
+model DentistSchedule {
+  id           String   @id @default(cuid())
+  dentistId    String
+  dentist      User     @relation(fields: [dentistId], references: [id], onDelete: Cascade)
+  dayOfWeek    Int      // 0 = Sunday, 1 = Monday ... 6 = Saturday
+  startTime    String   // e.g. "09:30"
+  endTime      String   // e.g. "19:30"
+  breakStart   String?  // e.g. "13:30"
+  breakEnd     String?  // e.g. "14:30"
+  isWorkingDay Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([dentistId, dayOfWeek])
+}
+
+model DentistLeave {
+  id        String   @id @default(cuid())
+  dentistId String
+  dentist   User     @relation(fields: [dentistId], references: [id], onDelete: Cascade)
+  startDate DateTime
+  endDate   DateTime
+  reason    String
+  status    String   @default("Approved") // "Pending", "Approved", "Rejected"
+  createdAt DateTime @default(now())
+}
+
+// -------------------------------------------------------------
+// 2. PATIENTS & CLINICAL CARE
+// -------------------------------------------------------------
+model Patient {
+  id                    String          @id @default(cuid())
+  referenceId           String          @unique // e.g. "AUR-P-1001"
+  fullName              String
+  phone                 String
+  email                 String?
+  dateOfBirth           DateTime?
+  gender                String?         // "Female", "Male", "Other"
+  bloodGroup            String?         // "O+", "A+", etc.
+  address               String?
+  city                  String?         @default("Pune")
+  medicalAlerts         String?         // e.g. "Penicillin allergy, Hypertension"
+  allergies             String?
+  emergencyContactName  String?
+  emergencyContactPhone String?
+  notes                 String?
+  status                String          @default("Active") // "Active", "Archived"
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  appointments          Appointment[]
+  clinicalNotes         ClinicalNote[]
+  treatmentPlans        TreatmentPlan[]
+  prescriptions         Prescription[]
+  invoices              Invoice[]
+  payments              Payment[]
+}
+
+model ClinicalNote {
+  id                  String       @id @default(cuid())
+  patientId           String
+  patient             Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  dentistId           String
+  dentist             User         @relation("DentistNotes", fields: [dentistId], references: [id])
+  appointmentId       String?
+  appointment         Appointment? @relation(fields: [appointmentId], references: [id], onDelete: SetNull)
+  toothNumber         String?      // Universal or FDI notation, e.g. "16", "21"
+  chiefComplaint      String
+  clinicalFindings    String
+  diagnosis           String
+  procedureConducted  String
+  materialsUsed       String?
+  followUpDate        DateTime?
+  isRestricted        Boolean      @default(false)
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+}
+
+model TreatmentPlan {
+  id            String   @id @default(cuid())
+  patientId     String
+  patient       Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  dentistId     String
+  dentist       User     @relation("DentistTreatmentPlans", fields: [dentistId], references: [id])
+  title         String
+  stagesJson    String   // JSON string of stages: [{ stage: "1", title: "Whitening", cost: 15000, status: "Done" }]
+  estimatedCost Float    @default(0)
+  status        String   @default("Proposed") // "Proposed", "Accepted", "In Progress", "Completed", "Declined"
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Prescription {
+  id              String   @id @default(cuid())
+  patientId       String
+  patient         Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  dentistId       String
+  dentist         User     @relation("DentistPrescriptions", fields: [dentistId], references: [id])
+  medicationsJson String   // JSON string: [{ name: "Amoxicillin 500mg", dosage: "1 tab TDS", duration: "5 days" }]
+  instructions    String?
+  date            DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// -------------------------------------------------------------
+// 3. APPOINTMENTS & SERVICES CATALOGUE
+// -------------------------------------------------------------
+model TreatmentService {
+  id                   String        @id @default(cuid())
+  slug                 String        @unique
+  number               String        // "01", "02", etc.
+  title                String
+  tagline              String
+  shortDesc            String
+  fullDesc             String
+  durationMinutes      Int           @default(60)
+  price                Float         @default(0)
+  deposit              Float         @default(0)
+  image                String
+  imageAlt             String
+  heroImage            String
+  supportingImagesJson String        @default("[]") // JSON string of urls
+  suitabilityJson      String        @default("[]") // JSON string of strings
+  benefitsJson         String        @default("[]") // JSON string of strings
+  timeline             String
+  approachJson         String        @default("[]") // JSON string of strings
+  procedureStagesJson  String        @default("[]") // JSON string of stages
+  idealFor             String
+  faqsJson             String        @default("[]") // JSON string of faqs
+  bookingVisibility    Boolean       @default(true)
+  isActive             Boolean       @default(true)
+  displayOrder         Int           @default(1)
+  seoTitle             String?
+  seoDescription       String?
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+
+  appointments         Appointment[]
+  invoiceItems         InvoiceItem[]
+}
+
+model Appointment {
+  id                 String            @id @default(cuid())
+  referenceId        String            @unique // e.g. "APT-2026-001"
+  patientId          String
+  patient            Patient           @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  dentistId          String
+  dentist            User              @relation("DentistAppointments", fields: [dentistId], references: [id])
+  treatmentId        String
+  treatment          TreatmentService  @relation(fields: [treatmentId], references: [id])
+  date               DateTime
+  startTime          String            // "10:00"
+  endTime            String            // "11:00"
+  durationMinutes    Int               @default(60)
+  status             String            @default("Requested") // "Requested", "Confirmed", "Checked In", "In Progress", "Completed", "Cancelled", "No Show"
+  bookingSource      String            @default("Website")   // "Website", "Reception", "Phone", "Referral"
+  notes              String?
+  cancellationReason String?
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  clinicalNotes      ClinicalNote[]
+  invoices           Invoice[]
+
+  @@index([dentistId, date])
+}
+
+// -------------------------------------------------------------
+// 4. BILLING, PAYMENTS & EXPENSES
+// -------------------------------------------------------------
+model Invoice {
+  id            String        @id @default(cuid())
+  invoiceNumber String        @unique // e.g. "INV-2026-001"
+  patientId     String
+  patient       Patient       @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  appointmentId String?
+  appointment   Appointment?  @relation(fields: [appointmentId], references: [id], onDelete: SetNull)
+  issueDate     DateTime      @default(now())
+  dueDate       DateTime
+  subtotal      Float         @default(0)
+  discount      Float         @default(0)
+  taxRate       Float         @default(0) // Percentage, e.g. 18 for 18% GST
+  taxAmount     Float         @default(0)
+  totalAmount   Float         @default(0)
+  amountPaid    Float         @default(0)
+  balanceDue    Float         @default(0)
+  status        String        @default("Issued") // "Draft", "Issued", "Partially Paid", "Paid", "Overdue", "Cancelled"
+  notes         String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  items         InvoiceItem[]
+  payments      Payment[]
+}
+
+model InvoiceItem {
+  id          String            @id @default(cuid())
+  invoiceId   String
+  invoice     Invoice           @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  treatmentId String?
+  treatment   TreatmentService? @relation(fields: [treatmentId], references: [id], onDelete: SetNull)
+  description String
+  quantity    Int               @default(1)
+  unitPrice   Float             @default(0)
+  amount      Float             @default(0)
+}
+
+model Payment {
+  id                   String   @id @default(cuid())
+  paymentReference     String   @unique // e.g. "PAY-2026-001"
+  invoiceId            String
+  invoice              Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Restrict)
+  patientId            String
+  patient              Patient  @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  amount               Float
+  paymentDate          DateTime @default(now())
+  paymentMethod        String   // "Cash", "UPI", "Card", "Bank Transfer"
+  transactionReference String?
+  recordedById         String
+  recordedBy           User     @relation("RecordedPayments", fields: [recordedById], references: [id])
+  notes                String?
+  isReversed           Boolean  @default(false)
+  reverseReason        String?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model Expense {
+  id                String    @id @default(cuid())
+  expenseNumber     String    @unique // e.g. "EXP-2026-001"
+  category          String    // "Clinical Supplies", "Lab Fees", "Utilities", "Salaries", "Rent", "Marketing", "Maintenance", "Other"
+  description       String
+  amount            Float
+  date              DateTime  @default(now())
+  supplierId        String?
+  supplier          Supplier? @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  invoiceReceiptUrl String?
+  paymentStatus     String    @default("Paid") // "Paid", "Pending"
+  createdById       String
+  createdBy         User      @relation("CreatedExpenses", fields: [createdById], references: [id])
+  notes             String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+// -------------------------------------------------------------
+// 5. INVENTORY & SUPPLIERS
+// -------------------------------------------------------------
+model Supplier {
+  id             String          @id @default(cuid())
+  name           String
+  contactPerson  String?
+  email          String?
+  phone          String?
+  address        String?
+  categoriesJson String          @default("[]") // JSON string of strings
+  notes          String?
+  isActive       Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  inventoryItems InventoryItem[]
+  expenses       Expense[]
+}
+
+model InventoryItem {
+  id               String          @id @default(cuid())
+  sku              String          @unique // e.g. "MED-IMPL-01"
+  name             String
+  category         String          // "PPE", "Biomaterials", "Instruments", "Sterilisation", "Restorative", "Consumables"
+  unit             String          // "box", "pack", "piece", "bottle", "set", "vial"
+  quantityAvailable Int            @default(0)
+  reorderThreshold Int             @default(5)
+  supplierId       String?
+  supplier         Supplier?       @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  purchaseCost     Float           @default(0)
+  expiryDate       DateTime?
+  batchNumber      String?
+  storageLocation  String?         @default("Main Storage")
+  isActive         Boolean         @default(true)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  movements        StockMovement[]
+}
+
+model StockMovement {
+  id              String        @id @default(cuid())
+  inventoryItemId String
+  inventoryItem   InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
+  movementType    String        // "Purchase", "Usage", "Adjustment", "Damaged", "Expired"
+  quantity        Int           // Positive for in, negative for out
+  reason          String
+  recordedById    String
+  recordedBy      User          @relation("RecordedMovements", fields: [recordedById], references: [id])
+  createdAt       DateTime      @default(now())
+}
+
+// -------------------------------------------------------------
+// 6. WEBSITE CMS (Pages, Blog, Team, Gallery, Testimonials, FAQ)
+// -------------------------------------------------------------
+model PublicPage {
+  id              String   @id @default(cuid())
+  slug            String   @unique // "home", "about", "patient-guide", "privacy", "terms", "contact"
+  title           String
+  headline        String?
+  subheadline     String?
+  contentJson     String   // Structured JSON content
+  metaTitle       String?
+  metaDescription String?
+  isPublished     Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model BlogCategory {
+  id          String        @id @default(cuid())
+  name        String
+  slug        String        @unique
+  description String?
+  articles    BlogArticle[]
+}
+
+model BlogArticle {
+  id             String        @id @default(cuid())
+  title          String
+  slug           String        @unique
+  excerpt        String
+  content        String        // Structured markdown or rich text
+  coverImage     String
+  categorySlug   String
+  category       BlogCategory  @relation(fields: [categorySlug], references: [slug])
+  authorName     String
+  readTime       String        @default("5 min read")
+  status         String        @default("Draft") // "Draft", "Published", "Archived"
+  publishedAt    DateTime?
+  seoTitle       String?
+  seoDescription String?
+  tagsJson       String        @default("[]") // JSON string of strings
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model TeamMember {
+  id                   String   @id @default(cuid())
+  slug                 String   @unique
+  name                 String
+  role                 String
+  bio                  String
+  qualifications       String
+  clinicalInterestsJson String  @default("[]")
+  image                String
+  email                String?
+  phone                String?
+  displayOrder         Int      @default(1)
+  isPublished          Boolean  @default(true)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model GalleryItem {
+  id           String   @id @default(cuid())
+  title        String
+  category     String   // "All Spaces", "The Studio", "Consultation", "Operatories", "Technology", "Smiles"
+  image        String
+  caption      String?
+  altText      String
+  displayOrder Int      @default(1)
+  isPublished  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Testimonial {
+  id            String   @id @default(cuid())
+  patientName   String
+  quote         String
+  treatmentName String
+  rating        Int      @default(5)
+  visitYear     String   @default("2024")
+  isFeatured    Boolean  @default(false)
+  isPublished   Boolean  @default(true)
+  displayOrder  Int      @default(1)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model FAQItem {
+  id           String   @id @default(cuid())
+  question     String
+  answer       String
+  category     String   @default("General") // "General", "Consultation", "Treatments", "Pricing", "Care"
+  displayOrder Int      @default(1)
+  isPublished  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// -------------------------------------------------------------
+// 7. LEADS, NOTIFICATIONS, SETTINGS & AUDIT
+// -------------------------------------------------------------
+model LeadEnquiry {
+  id                 String   @id @default(cuid())
+  referenceId        String   @unique // e.g. "LEAD-2026-001"
+  type               String   @default("Contact Form") // "Contact Form", "Booking Request", "Concierge Inquiry"
+  name               String
+  email              String?
+  phone              String
+  requestedTreatment String?
+  preferredDate      String?
+  preferredTime      String?
+  message            String?
+  sourcePage         String   @default("/contact")
+  status             String   @default("New") // "New", "Contacted", "Follow-up Required", "Converted", "Closed"
+  notes              String?
+  assignedToId       String?
+  assignedTo         User?    @relation("AssignedLeads", fields: [assignedToId], references: [id], onDelete: SetNull)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String?  // null means all staff
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      String   @default("info") // "info", "warning", "success", "alert"
+  link      String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model ClinicSetting {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String
+  category    String   @default("general") // "general", "branding", "booking", "billing", "notifications"
+  description String?
+  updatedAt   DateTime @updatedAt
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  actorId     String?
+  actor       User?    @relation("ActorAuditLogs", fields: [actorId], references: [id], onDelete: SetNull)
+  actorName   String
+  actorRole   String
+  action      String   // e.g. "CREATE", "UPDATE", "DELETE", "LOGIN", "EXPORT", "PUBLISH"
+  entityType  String   // e.g. "Appointment", "Patient", "Invoice", "Treatment", "BlogArticle", "Settings"
+  entityId    String?
+  detailsJson String?  // JSON details of changes
+  ipAddress   String?
+  createdAt   DateTime @default(now())
+}

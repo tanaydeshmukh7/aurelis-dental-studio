@@ -5,6 +5,7 @@ import SiteNavbar from "@/components/navigation/SiteNavbar";
 import SiteFooter from "@/components/common/SiteFooter";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { CLINIC_TEAM } from "@/data/team";
+import { prisma } from "@/lib/prisma";
 
 export const metadata = {
   title: "The Clinical Team & Leadership | AURELIS Dental Studio Pune",
@@ -12,7 +13,35 @@ export const metadata = {
     "Meet our team of dentists, specialists, hygienists, and patient concierges dedicated to thoughtful, unhurried dentistry in Koregaon Park, Pune.",
 };
 
-export default function TeamPage() {
+async function getTeamMembers() {
+  try {
+    const list = await prisma.teamMember.findMany({
+      where: { isPublished: true },
+      orderBy: { displayOrder: "asc" },
+    });
+    if (list && list.length > 0) {
+      return list.map((m) => ({
+        id: m.id,
+        slug: m.slug,
+        name: m.name,
+        role: m.role,
+        category: "Clinical Leadership",
+        credentials: m.qualifications,
+        specialty: m.role,
+        shortBio: m.bio,
+        fullBio: [m.bio],
+        responsibilities: [m.role, "Clinical Precision"],
+        philosophy: m.bio,
+        portraitImage: m.image,
+        portraitAlt: m.name,
+      }));
+    }
+  } catch {}
+  return CLINIC_TEAM;
+}
+
+export default async function TeamPage() {
+  const team = await getTeamMembers();
   return (
     <div className="min-h-screen bg-ivory text-espresso flex flex-col">
       <SiteNavbar />
@@ -133,7 +162,7 @@ export default function TeamPage() {
 
             {/* 4-Column Responsive Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {CLINIC_TEAM.map((member) => (
+              {team.map((member: any) => (
                 <div
                   key={member.slug}
                   className="bg-sand/20 border border-espresso/8 flex flex-col justify-between group hover:border-sage/50 hover:shadow-subtle transition-all duration-300"
@@ -175,7 +204,7 @@ export default function TeamPage() {
                           Key Clinical Focus
                         </span>
                         <p className="text-[11px] text-espresso/90 font-medium line-clamp-1">
-                          {member.responsibilities[0]}
+                          {member.responsibilities?.[0] || member.role}
                         </p>
                       </div>
                     </div>

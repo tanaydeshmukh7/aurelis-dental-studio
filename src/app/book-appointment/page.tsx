@@ -60,20 +60,44 @@ export default function BookAppointmentPage() {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [referenceId, setReferenceId] = useState<string | null>(null);
+  const [serverError, setServerError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
+    setServerError(null);
+
+    try {
+      const res = await fetch("/api/public/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setServerError(data.error || "Failed to submit booking request. Please call our reception.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      setReferenceId(data.referenceId);
       setSubmittedData({ ...formData });
-    }, 1200);
+      setIsSubmitted(true);
+    } catch {
+      setServerError("Network error while connecting to clinic scheduling system. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
     setIsSubmitted(false);
+    setReferenceId(null);
+    setServerError(null);
     setFormData({
       fullName: "",
       phone: "",
@@ -189,15 +213,12 @@ export default function BookAppointmentPage() {
             {/* Right Column Form */}
             <div className="lg:col-span-7 bg-ivory p-6 sm:p-10 lg:p-12 border border-espresso/10 shadow-card">
               
-              {/* Demo Notice */}
-              <div className="mb-6 p-3.5 bg-sand/40 border border-espresso/10 flex items-center justify-between text-xs text-taupe">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-3.5 h-3.5 text-sage shrink-0" />
-                  <span>
-                    <strong>Interactive Demo Flow:</strong> Validates in-browser without sending unsolicited messages.
-                  </span>
+              {serverError && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                  <span>{serverError}</span>
                 </div>
-              </div>
+              )}
 
               {isSubmitted && submittedData ? (
                 <div className="py-8 text-center space-y-6 animate-fade-in">
@@ -207,15 +228,22 @@ export default function BookAppointmentPage() {
 
                   <div className="space-y-2">
                     <span className="text-[11px] uppercase tracking-[0.25em] text-sage font-semibold">
-                      Request Registered (Demo Notice)
+                      Private Reservation Confirmed
                     </span>
                     <h2 className="font-serif text-3xl sm:text-4xl text-espresso font-normal">
                       Thank you, {submittedData.fullName}.
                     </h2>
                     <p className="text-sm text-taupe max-w-md mx-auto leading-relaxed">
-                      This confirms the client-side validation flow. In production, this data feeds into your clinic scheduling CRM or WhatsApp webhook.
+                      Your consultation request is now active in our clinical scheduling system.
+                      Our patient care coordinator will review your requested treatment and slot to confirm final reservation details.
                     </p>
                   </div>
+
+                  {referenceId && (
+                    <div className="inline-block px-4 py-2 bg-sand/30 border border-sage text-espresso font-mono text-sm font-semibold">
+                      Reservation Reference: {referenceId}
+                    </div>
+                  )}
 
                   <div className="p-5 bg-sand/20 border border-espresso/10 text-left text-xs space-y-2 max-w-md mx-auto text-espresso/90">
                     <p><strong>Treatment:</strong> {submittedData.treatment}</p>

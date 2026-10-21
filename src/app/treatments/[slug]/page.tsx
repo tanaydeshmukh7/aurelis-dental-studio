@@ -6,12 +6,47 @@ import { ArrowLeft, ArrowUpRight, CheckCircle2, Clock, Sparkles, HelpCircle } fr
 import SiteNavbar from "@/components/navigation/SiteNavbar";
 import SiteFooter from "@/components/common/SiteFooter";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
-import { TREATMENTS } from "@/data/treatments";
+import { TREATMENTS, Treatment } from "@/data/treatments";
+import { prisma } from "@/lib/prisma";
 
 interface Props {
   params: {
     slug: string;
   };
+}
+
+async function getTreatment(slug: string): Promise<Treatment | null> {
+  const staticTreatment = TREATMENTS.find((t) => t.slug === slug);
+  if (staticTreatment) return staticTreatment;
+
+  try {
+    const dbTreatment = await prisma.treatmentService.findUnique({
+      where: { slug },
+    });
+    if (dbTreatment) {
+      return {
+        id: dbTreatment.id,
+        slug: dbTreatment.slug,
+        number: dbTreatment.number,
+        title: dbTreatment.title,
+        tagline: dbTreatment.tagline,
+        shortDesc: dbTreatment.shortDesc,
+        fullDesc: dbTreatment.fullDesc,
+        image: dbTreatment.image,
+        imageAlt: dbTreatment.imageAlt,
+        heroImage: dbTreatment.heroImage,
+        supportingImages: JSON.parse(dbTreatment.supportingImagesJson || "[]") as string[],
+        suitability: JSON.parse(dbTreatment.suitabilityJson || "[]") as string[],
+        benefits: JSON.parse(dbTreatment.benefitsJson || "[]") as string[],
+        timeline: dbTreatment.timeline,
+        approach: JSON.parse(dbTreatment.approachJson || "[]") as string[],
+        procedureStages: JSON.parse(dbTreatment.procedureStagesJson || "[]") as { stage: string; title: string; description: string }[],
+        idealFor: dbTreatment.idealFor,
+        faqs: JSON.parse(dbTreatment.faqsJson || "[]") as { question: string; answer: string }[],
+      };
+    }
+  } catch {}
+  return null;
 }
 
 export async function generateStaticParams() {
@@ -21,7 +56,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const treatment = TREATMENTS.find((t) => t.slug === params.slug);
+  const treatment = await getTreatment(params.slug);
   if (!treatment) return { title: "Treatment Not Found | AURELIS Dental Studio" };
 
   return {
@@ -35,8 +70,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function SingleTreatmentProtocolPage({ params }: Props) {
-  const treatment = TREATMENTS.find((t) => t.slug === params.slug);
+export default async function SingleTreatmentProtocolPage({ params }: Props) {
+  const treatment = await getTreatment(params.slug);
   if (!treatment) notFound();
 
   const otherTreatments = TREATMENTS.filter((t) => t.slug !== treatment.slug).slice(0, 3);

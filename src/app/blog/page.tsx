@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Search, ArrowUpRight, Clock, Check, Send } from "lucide-react";
@@ -10,17 +10,29 @@ import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { BLOG_ARTICLES, BLOG_CATEGORIES } from "@/data/blog";
 
 export default function BlogLandingPage() {
+  const [articles, setArticles] = useState(BLOG_ARTICLES);
   const [selectedCategory, setSelectedCategory] = useState<string>("All Articles");
   const [searchQuery, setSearchQuery] = useState("");
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
 
-  const featuredArticle = useMemo(() => {
-    return BLOG_ARTICLES.find((a) => a.featured) || BLOG_ARTICLES[0];
+  useEffect(() => {
+    fetch("/api/public/content")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.blog && data.blog.length > 0) {
+          setArticles(data.blog);
+        }
+      })
+      .catch(() => {});
   }, []);
 
+  const featuredArticle = useMemo(() => {
+    return articles.find((a: any) => a.featured) || articles[0];
+  }, [articles]);
+
   const filteredArticles = useMemo(() => {
-    return BLOG_ARTICLES.filter((article) => {
+    return articles.filter((article: any) => {
       const matchesCategory =
         selectedCategory === "All Articles" ||
         article.category === selectedCategory;
@@ -33,7 +45,7 @@ export default function BlogLandingPage() {
 
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [articles, selectedCategory, searchQuery]);
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();

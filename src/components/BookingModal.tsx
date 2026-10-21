@@ -29,6 +29,8 @@ export default function BookingModal({
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
+  const [referenceId, setReferenceId] = useState<string | null>(null);
 
   useEffect(() => {
     if (selectedTreatment) {
@@ -80,19 +82,41 @@ export default function BookingModal({
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setServerError(null);
+
+    try {
+      const res = await fetch("/api/public/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setServerError(data.error || "Failed to schedule appointment. Please call our concierge.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      setReferenceId(data.referenceId);
       setIsSubmitted(true);
-    }, 1000);
+    } catch {
+      setServerError("Network error while submitting your consultation request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
     setIsSubmitted(false);
+    setReferenceId(null);
+    setServerError(null);
     onClose();
   };
 
@@ -125,11 +149,16 @@ export default function BookingModal({
             <h3 className="font-serif text-3xl text-espresso font-normal">
               Thank you, {formData.fullName}.
             </h3>
+            {referenceId && (
+              <div className="inline-block px-3 py-1 bg-sage/15 border border-sage/30 text-sage-dark text-xs font-mono font-medium">
+                Reference: <span className="font-bold">{referenceId}</span>
+              </div>
+            )}
             <p className="text-sm text-taupe max-w-sm mx-auto leading-relaxed">
               Your request for a private visit at our Koregaon Park studio has been
-              received. Our concierge team will reach out shortly.
+              recorded in our appointment queue. Our concierge team will reach out shortly.
             </p>
-            <div className="p-4 bg-sand/30 border border-espresso/10 text-xs text-espresso text-left max-w-sm mx-auto">
+            <div className="p-4 bg-sand/30 border border-espresso/10 text-xs text-espresso text-left max-w-sm mx-auto space-y-1">
               <p><strong>Treatment:</strong> {formData.treatment}</p>
               <p><strong>Preferred Date:</strong> {formData.preferredDate}</p>
               <p><strong>Window:</strong> {formData.preferredTime}</p>
@@ -157,6 +186,12 @@ export default function BookingModal({
                 Unhurried, private evaluation at our Koregaon Park studio.
               </p>
             </div>
+
+            {serverError && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 text-xs text-red-700">
+                {serverError}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div>

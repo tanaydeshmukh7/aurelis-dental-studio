@@ -4,6 +4,7 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, Navigation, ExternalLink, Ca
 import SiteNavbar from "@/components/navigation/SiteNavbar";
 import SiteFooter from "@/components/common/SiteFooter";
 import PageHero from "@/components/common/PageHero";
+import ContactInquiryForm from "@/components/ContactInquiryForm";
 import { CLINIC_CONTACT } from "@/data/studio";
 import { SITE_METADATA } from "@/data/site";
 
@@ -166,6 +167,9 @@ export default function ContactPage() {
                     </a>
                   </div>
                 </div>
+
+                {/* Direct Concierge Inquiry Form */}
+                <ContactInquiryForm />
 
                 {/* Transit & Arrival Notes */}
                 <div className="p-6 bg-sand/20 border border-espresso/10 text-xs text-taupe space-y-2">

@@ -6,12 +6,42 @@ import { ArrowLeft, ArrowUpRight, Award, Check, Sparkles } from "lucide-react";
 import SiteNavbar from "@/components/navigation/SiteNavbar";
 import SiteFooter from "@/components/common/SiteFooter";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
-import { CLINIC_TEAM } from "@/data/team";
+import { CLINIC_TEAM, TeamMember } from "@/data/team";
+import { prisma } from "@/lib/prisma";
 
 interface Props {
   params: {
     slug: string;
   };
+}
+
+async function getTeamMember(slug: string): Promise<TeamMember | null> {
+  const staticMember = CLINIC_TEAM.find((m) => m.slug === slug);
+  if (staticMember) return staticMember;
+
+  try {
+    const m = await prisma.teamMember.findUnique({
+      where: { slug },
+    });
+    if (m) {
+      return {
+        slug: m.slug,
+        name: m.name,
+        role: m.role,
+        category: "Clinical Leadership",
+        isPlaceholder: false,
+        qualificationsPlaceholder: m.qualifications,
+        shortBio: m.bio,
+        fullBio: [m.bio],
+        responsibilities: ["Comprehensive Clinical Consultation", "Advanced Dental Protocol Delivery"],
+        philosophy: m.bio,
+        portraitImage: m.image,
+        portraitAlt: m.name,
+        relatedTreatments: [],
+      };
+    }
+  } catch {}
+  return null;
 }
 
 export async function generateStaticParams() {
@@ -21,7 +51,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const member = CLINIC_TEAM.find((m) => m.slug === params.slug);
+  const member = await getTeamMember(params.slug);
   if (!member) return { title: "Team Profile Not Found | AURELIS Dental Studio" };
 
   return {
@@ -30,8 +60,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function SingleTeamMemberPage({ params }: Props) {
-  const member = CLINIC_TEAM.find((m) => m.slug === params.slug);
+export default async function SingleTeamMemberPage({ params }: Props) {
+  const member = await getTeamMember(params.slug);
   if (!member) notFound();
 
   return (

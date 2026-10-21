@@ -7,12 +7,56 @@ import SiteNavbar from "@/components/navigation/SiteNavbar";
 import SiteFooter from "@/components/common/SiteFooter";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { BLOG_ARTICLES, BlogArticle } from "@/data/blog";
+import { prisma } from "@/lib/prisma";
 import ShareButtons from "./ShareButtons";
 
 interface Props {
   params: {
     slug: string;
   };
+}
+
+async function getArticle(slug: string): Promise<BlogArticle | null> {
+  const staticArticle = BLOG_ARTICLES.find((a) => a.slug === slug);
+  if (staticArticle) return staticArticle;
+
+  try {
+    const dbArticle = await prisma.blogArticle.findUnique({
+      where: { slug },
+    });
+    if (dbArticle) {
+      return {
+        slug: dbArticle.slug,
+        title: dbArticle.title,
+        excerpt: dbArticle.excerpt,
+        category: (dbArticle.categorySlug as any) || "Modern Dentistry",
+        readTime: dbArticle.readTime,
+        publishedDate: dbArticle.publishedAt
+          ? dbArticle.publishedAt.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+          : new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+        author: {
+          name: dbArticle.authorName,
+          role: "Clinical Specialist",
+          isDemo: false,
+        },
+        coverImage: dbArticle.coverImage,
+        coverImageAlt: dbArticle.title,
+        featured: false,
+        content: {
+          intro: dbArticle.excerpt,
+          sections: [
+            {
+              heading: "Clinical Overview",
+              body: dbArticle.content ? dbArticle.content.split("\n\n").filter(Boolean) : [dbArticle.excerpt],
+            },
+          ],
+          summary: "Consult with an Aurelis clinician to discuss individualized clinical protocols.",
+        },
+        relatedSlugs: [],
+      };
+    }
+  } catch {}
+  return null;
 }
 
 export async function generateStaticParams() {
@@ -22,7 +66,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = BLOG_ARTICLES.find((a) => a.slug === params.slug);
+  const article = await getArticle(params.slug);
   if (!article) return { title: "Article Not Found | AURELIS Dental Studio" };
 
   return {
@@ -36,12 +80,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function SingleBlogArticlePage({ params }: Props) {
-  const article = BLOG_ARTICLES.find((a) => a.slug === params.slug);
+export default async function SingleBlogArticlePage({ params }: Props) {
+  const article = await getArticle(params.slug);
   if (!article) notFound();
 
   const relatedArticles = BLOG_ARTICLES.filter((a) =>
-    article.relatedSlugs.includes(a.slug)
+    (article.relatedSlugs || []).includes(a.slug)
   ).slice(0, 3);
 
   return (
