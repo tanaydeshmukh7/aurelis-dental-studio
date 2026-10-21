@@ -112,7 +112,7 @@ export default function BookAppointmentPage() {
   };
 
   return (
-    <div className="min-h-screen bg-ivory text-espresso flex flex-col">
+    <div className="min-h-screen bg-[#DCD4C8] text-[#28231F] flex flex-col">
       <SiteNavbar />
 
       <main className="flex-1 pt-28 sm:pt-36 pb-24">
@@ -125,56 +125,56 @@ export default function BookAppointmentPage() {
             <div className="lg:col-span-5 space-y-8">
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="w-5 h-[1px] bg-sage" />
-                  <span className="text-[11px] tracking-[0.25em] text-sage uppercase font-semibold">
+                  <span className="w-5 h-[1px] bg-[#66866D]" />
+                  <span className="text-[11px] tracking-[0.25em] text-[#66866D] uppercase font-semibold">
                     PRIVATE APPOINTMENTS
                   </span>
                 </div>
 
-                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-espresso font-normal tracking-tight leading-[1.12]">
+                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#28231F] font-normal tracking-tight leading-[1.12]">
                   Let&apos;s talk about <br />
                   <span className="italic font-light">your smile.</span>
                 </h1>
 
-                <p className="mt-6 text-base sm:text-lg text-taupe leading-relaxed">
+                <p className="mt-6 text-base sm:text-lg text-[#514A42] leading-relaxed">
                   Tell us a little about your goals or concerns, and our concierge
                   team will coordinate an unhurried, private visit.
                 </p>
               </div>
 
               {/* Clinic Guarantees */}
-              <div className="space-y-4 pt-6 border-t border-espresso/10">
+              <div className="space-y-4 pt-6 border-t border-[#B8ADA0]">
                 <div className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-sage shrink-0 mt-0.5" />
+                  <Clock className="w-5 h-5 text-[#66866D] shrink-0 mt-0.5" />
                   <div>
-                    <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-espresso">
+                    <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-[#28231F]">
                       Exclusively Reserved Time
                     </h2>
-                    <p className="text-xs text-taupe mt-0.5">
+                    <p className="text-xs text-[#514A42] mt-0.5">
                       We never double-book. Your clinician is focused entirely on you.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Calendar className="w-5 h-5 text-sage shrink-0 mt-0.5" />
+                  <Calendar className="w-5 h-5 text-[#66866D] shrink-0 mt-0.5" />
                   <div>
-                    <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-espresso">
+                    <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-[#28231F]">
                       Transparent Written Roadmap
                     </h2>
-                    <p className="text-xs text-taupe mt-0.5">
+                    <p className="text-xs text-[#514A42] mt-0.5">
                       Itemised fee schedule and clinical options provided before proceeding.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Shield className="w-5 h-5 text-sage shrink-0 mt-0.5" />
+                  <Shield className="w-5 h-5 text-[#66866D] shrink-0 mt-0.5" />
                   <div>
-                    <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-espresso">
+                    <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-[#28231F]">
                       Medical Confidentiality
                     </h2>
-                    <p className="text-xs text-taupe mt-0.5">
+                    <p className="text-xs text-[#514A42] mt-0.5">
                       Your photographic and 3D diagnostic records remain strictly confidential.
                     </p>
                   </div>
@@ -182,28 +182,28 @@ export default function BookAppointmentPage() {
               </div>
 
               {/* Direct Concierge Contact Box */}
-              <div className="p-6 bg-sand/30 border border-espresso/10 space-y-3">
-                <span className="text-[10px] uppercase tracking-[0.2em] text-sage font-semibold block">
+              <div className="p-6 bg-[#CFC5B7]/60 border border-[#B8ADA0] space-y-3 shadow-card">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#66866D] font-semibold block">
                   Prefer direct assistance?
                 </span>
-                <p className="text-xs text-taupe">
+                <p className="text-xs text-[#514A42]">
                   Our concierge team is available to assist via WhatsApp or direct phone:
                 </p>
-                <div className="pt-2 flex flex-col gap-2 text-xs font-medium text-espresso">
+                <div className="pt-2 flex flex-col gap-2 text-xs font-medium text-[#28231F]">
                   <a
                     href={`https://wa.me/${SITE_METADATA.whatsappRaw}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sage hover:text-sage-dark transition-colors"
+                    className="inline-flex items-center gap-2 text-[#66866D] hover:text-[#86A58C] transition-colors"
                   >
                     <MessageCircle className="w-4 h-4" />
                     <span>WhatsApp: {SITE_METADATA.whatsapp}</span>
                   </a>
                   <a
                     href={`tel:${SITE_METADATA.phoneRaw}`}
-                    className="inline-flex items-center gap-2 hover:text-sage transition-colors"
+                    className="inline-flex items-center gap-2 hover:text-[#66866D] transition-colors"
                   >
-                    <Phone className="w-4 h-4 text-sage" />
+                    <Phone className="w-4 h-4 text-[#66866D]" />
                     <span>Direct: {SITE_METADATA.phone}</span>
                   </a>
                 </div>
@@ -211,41 +211,41 @@ export default function BookAppointmentPage() {
             </div>
 
             {/* Right Column Form */}
-            <div className="lg:col-span-7 bg-ivory p-6 sm:p-10 lg:p-12 border border-espresso/10 shadow-card">
+            <div className="lg:col-span-7 bg-[#24221F] text-[#F0E9DF] p-6 sm:p-10 lg:p-12 border border-[#514A41] shadow-card">
               
               {serverError && (
-                <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                <div className="mb-6 p-4 bg-red-950/60 border border-red-700/60 text-red-200 text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
                   <span>{serverError}</span>
                 </div>
               )}
 
               {isSubmitted && submittedData ? (
                 <div className="py-8 text-center space-y-6 animate-fade-in">
-                  <div className="w-16 h-16 bg-sage-subtle mx-auto flex items-center justify-center border border-sage/40">
-                    <CheckCircle2 className="w-8 h-8 text-sage" />
+                  <div className="w-16 h-16 bg-[#86A58C]/20 mx-auto flex items-center justify-center border border-[#86A58C]/40">
+                    <CheckCircle2 className="w-8 h-8 text-[#86A58C]" />
                   </div>
 
                   <div className="space-y-2">
-                    <span className="text-[11px] uppercase tracking-[0.25em] text-sage font-semibold">
+                    <span className="text-[11px] uppercase tracking-[0.25em] text-[#86A58C] font-semibold">
                       Private Reservation Confirmed
                     </span>
-                    <h2 className="font-serif text-3xl sm:text-4xl text-espresso font-normal">
+                    <h2 className="font-serif text-3xl sm:text-4xl text-[#F0E9DF] font-normal">
                       Thank you, {submittedData.fullName}.
                     </h2>
-                    <p className="text-sm text-taupe max-w-md mx-auto leading-relaxed">
+                    <p className="text-sm text-[#C6BCAE] max-w-md mx-auto leading-relaxed">
                       Your consultation request is now active in our clinical scheduling system.
                       Our patient care coordinator will review your requested treatment and slot to confirm final reservation details.
                     </p>
                   </div>
 
                   {referenceId && (
-                    <div className="inline-block px-4 py-2 bg-sand/30 border border-sage text-espresso font-mono text-sm font-semibold">
+                    <div className="inline-block px-4 py-2 bg-[#1C1A17] border border-[#86A58C] text-[#F0E9DF] font-mono text-sm font-semibold">
                       Reservation Reference: {referenceId}
                     </div>
                   )}
 
-                  <div className="p-5 bg-sand/20 border border-espresso/10 text-left text-xs space-y-2 max-w-md mx-auto text-espresso/90">
+                  <div className="p-5 bg-[#1C1A17] border border-[#514A41] text-left text-xs space-y-2 max-w-md mx-auto text-[#C6BCAE]">
                     <p><strong>Treatment:</strong> {submittedData.treatment}</p>
                     <p><strong>Preferred Date:</strong> {submittedData.preferredDate}</p>
                     <p><strong>Preferred Window:</strong> {submittedData.preferredTime}</p>
@@ -256,7 +256,7 @@ export default function BookAppointmentPage() {
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="px-6 py-3 border border-espresso text-xs uppercase tracking-[0.2em] text-espresso hover:bg-espresso hover:text-white transition-colors"
+                    className="px-6 py-3 border border-[#514A41] text-xs uppercase tracking-[0.2em] text-[#F0E9DF] hover:bg-[#302D28] transition-colors"
                   >
                     Submit Another Request
                   </button>
@@ -269,9 +269,9 @@ export default function BookAppointmentPage() {
                     <div>
                       <label
                         htmlFor="bookingFullName"
-                        className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                        className="block text-xs uppercase tracking-[0.16em] font-medium text-[#C6BCAE] mb-2"
                       >
-                        Full Name <span className="text-sage">*</span>
+                        Full Name <span className="text-[#86A58C]">*</span>
                       </label>
                       <input
                         type="text"
@@ -281,14 +281,14 @@ export default function BookAppointmentPage() {
                           setFormData({ ...formData, fullName: e.target.value })
                         }
                         placeholder="e.g. Anjali Kulkarni"
-                        className={`w-full bg-sand/20 border px-4 py-3 text-sm text-espresso placeholder:text-taupe/60 focus:bg-white focus:outline-none transition-colors ${
+                        className={`w-full bg-[#1C1A17] border px-4 py-3 text-sm text-[#F0E9DF] placeholder:text-[#82786E] focus:outline-none transition-colors ${
                           errors.fullName
                             ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-espresso/15 focus:border-sage focus:ring-1 focus:ring-sage"
+                            : "border-[#514A41] focus:border-[#86A58C] focus:ring-1 focus:ring-[#86A58C]"
                         }`}
                       />
                       {errors.fullName && (
-                        <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
+                        <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                           <AlertCircle className="w-3 h-3" />
                           <span>{errors.fullName}</span>
                         </p>
@@ -298,9 +298,9 @@ export default function BookAppointmentPage() {
                     <div>
                       <label
                         htmlFor="bookingPhone"
-                        className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                        className="block text-xs uppercase tracking-[0.16em] font-medium text-[#C6BCAE] mb-2"
                       >
-                        Phone Number <span className="text-sage">*</span>
+                        Phone Number <span className="text-[#86A58C]">*</span>
                       </label>
                       <input
                         type="tel"
@@ -310,14 +310,14 @@ export default function BookAppointmentPage() {
                           setFormData({ ...formData, phone: e.target.value })
                         }
                         placeholder="+91 98220 XXXXX"
-                        className={`w-full bg-sand/20 border px-4 py-3 text-sm text-espresso placeholder:text-taupe/60 focus:bg-white focus:outline-none transition-colors ${
+                        className={`w-full bg-[#1C1A17] border px-4 py-3 text-sm text-[#F0E9DF] placeholder:text-[#82786E] focus:outline-none transition-colors ${
                           errors.phone
                             ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-espresso/15 focus:border-sage focus:ring-1 focus:ring-sage"
+                            : "border-[#514A41] focus:border-[#86A58C] focus:ring-1 focus:ring-[#86A58C]"
                         }`}
                       />
                       {errors.phone && (
-                        <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
+                        <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                           <AlertCircle className="w-3 h-3" />
                           <span>{errors.phone}</span>
                         </p>
@@ -330,9 +330,9 @@ export default function BookAppointmentPage() {
                     <div>
                       <label
                         htmlFor="bookingEmail"
-                        className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                        className="block text-xs uppercase tracking-[0.16em] font-medium text-[#C6BCAE] mb-2"
                       >
-                        Email Address <span className="text-taupe text-[10px] font-normal">(Optional)</span>
+                        Email Address <span className="text-[#82786E] text-[10px] font-normal">(Optional)</span>
                       </label>
                       <input
                         type="email"
@@ -342,14 +342,14 @@ export default function BookAppointmentPage() {
                           setFormData({ ...formData, email: e.target.value })
                         }
                         placeholder="anjali@domain.com"
-                        className={`w-full bg-sand/20 border px-4 py-3 text-sm text-espresso placeholder:text-taupe/60 focus:bg-white focus:outline-none transition-colors ${
+                        className={`w-full bg-[#1C1A17] border px-4 py-3 text-sm text-[#F0E9DF] placeholder:text-[#82786E] focus:outline-none transition-colors ${
                           errors.email
                             ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-espresso/15 focus:border-sage focus:ring-1 focus:ring-sage"
+                            : "border-[#514A41] focus:border-[#86A58C] focus:ring-1 focus:ring-[#86A58C]"
                         }`}
                       />
                       {errors.email && (
-                        <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
+                        <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                           <AlertCircle className="w-3 h-3" />
                           <span>{errors.email}</span>
                         </p>
@@ -359,7 +359,7 @@ export default function BookAppointmentPage() {
                     <div>
                       <label
                         htmlFor="bookingTreatment"
-                        className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                        className="block text-xs uppercase tracking-[0.16em] font-medium text-[#C6BCAE] mb-2"
                       >
                         Clinical Discipline
                       </label>
@@ -369,17 +369,17 @@ export default function BookAppointmentPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, treatment: e.target.value })
                         }
-                        className="w-full bg-sand/20 border border-espresso/15 px-4 py-3 text-sm text-espresso focus:bg-white focus:border-sage focus:ring-1 focus:ring-sage focus:outline-none transition-colors"
+                        className="w-full bg-[#1C1A17] border border-[#514A41] px-4 py-3 text-sm text-[#F0E9DF] focus:border-[#86A58C] focus:ring-1 focus:ring-[#86A58C] focus:outline-none transition-colors"
                       >
                         {TREATMENTS.map((t) => (
-                          <option key={t.id} value={t.title}>
+                          <option key={t.id} value={t.title} className="bg-[#1C1A17] text-[#F0E9DF]">
                             {t.title} ({t.number})
                           </option>
                         ))}
-                        <option value="General Consultation">
+                        <option value="General Consultation" className="bg-[#1C1A17] text-[#F0E9DF]">
                           General Oral Wellness Consultation
                         </option>
-                        <option value="Second Opinion">
+                        <option value="Second Opinion" className="bg-[#1C1A17] text-[#F0E9DF]">
                           Second Opinion on Existing Treatment Plan
                         </option>
                       </select>
@@ -391,9 +391,9 @@ export default function BookAppointmentPage() {
                     <div>
                       <label
                         htmlFor="bookingDate"
-                        className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                        className="block text-xs uppercase tracking-[0.16em] font-medium text-[#C6BCAE] mb-2"
                       >
-                        Preferred Date <span className="text-sage">*</span>
+                        Preferred Date <span className="text-[#86A58C]">*</span>
                       </label>
                       <input
                         type="date"
@@ -403,14 +403,14 @@ export default function BookAppointmentPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, preferredDate: e.target.value })
                         }
-                        className={`w-full bg-sand/20 border px-4 py-3 text-sm text-espresso focus:bg-white focus:outline-none transition-colors ${
+                        className={`w-full bg-[#1C1A17] border px-4 py-3 text-sm text-[#F0E9DF] focus:outline-none transition-colors ${
                           errors.preferredDate
                             ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-espresso/15 focus:border-sage focus:ring-1 focus:ring-sage"
+                            : "border-[#514A41] focus:border-[#86A58C] focus:ring-1 focus:ring-[#86A58C]"
                         }`}
                       />
                       {errors.preferredDate && (
-                        <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
+                        <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                           <AlertCircle className="w-3 h-3" />
                           <span>{errors.preferredDate}</span>
                         </p>
@@ -420,7 +420,7 @@ export default function BookAppointmentPage() {
                     <div>
                       <label
                         htmlFor="bookingTime"
-                        className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                        className="block text-xs uppercase tracking-[0.16em] font-medium text-[#C6BCAE] mb-2"
                       >
                         Preferred Time Window
                       </label>
@@ -430,15 +430,15 @@ export default function BookAppointmentPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, preferredTime: e.target.value })
                         }
-                        className="w-full bg-sand/20 border border-espresso/15 px-4 py-3 text-sm text-espresso focus:bg-white focus:border-sage focus:ring-1 focus:ring-sage focus:outline-none transition-colors"
+                        className="w-full bg-[#1C1A17] border border-[#514A41] px-4 py-3 text-sm text-[#F0E9DF] focus:border-[#86A58C] focus:ring-1 focus:ring-[#86A58C] focus:outline-none transition-colors"
                       >
-                        <option value="Morning (10:00 AM – 01:00 PM)">
+                        <option value="Morning (10:00 AM – 01:00 PM)" className="bg-[#1C1A17] text-[#F0E9DF]">
                           Morning (10:00 AM – 01:00 PM)
                         </option>
-                        <option value="Afternoon (01:00 PM – 04:30 PM)">
+                        <option value="Afternoon (01:00 PM – 04:30 PM)" className="bg-[#1C1A17] text-[#F0E9DF]">
                           Afternoon (01:00 PM – 04:30 PM)
                         </option>
-                        <option value="Evening (04:30 PM – 07:30 PM)">
+                        <option value="Evening (04:30 PM – 07:30 PM)" className="bg-[#1C1A17] text-[#F0E9DF]">
                           Evening (04:30 PM – 07:30 PM)
                         </option>
                       </select>
@@ -449,9 +449,9 @@ export default function BookAppointmentPage() {
                   <div>
                     <label
                       htmlFor="bookingMessage"
-                      className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                      className="block text-xs uppercase tracking-[0.16em] font-medium text-[#C6BCAE] mb-2"
                     >
-                      Notes or Dental Sensitivities <span className="text-taupe text-[10px] font-normal">(Optional)</span>
+                      Notes or Dental Sensitivities <span className="text-[#82786E] text-[10px] font-normal">(Optional)</span>
                     </label>
                     <textarea
                       id="bookingMessage"
@@ -461,7 +461,7 @@ export default function BookAppointmentPage() {
                         setFormData({ ...formData, message: e.target.value })
                       }
                       placeholder="Let us know if you experience dental apprehension, have sensitive teeth, or specific aesthetic goals..."
-                      className="w-full bg-sand/20 border border-espresso/15 px-4 py-3 text-sm text-espresso placeholder:text-taupe/60 focus:bg-white focus:border-sage focus:ring-1 focus:ring-sage focus:outline-none transition-colors"
+                      className="w-full bg-[#1C1A17] border border-[#514A41] px-4 py-3 text-sm text-[#F0E9DF] placeholder:text-[#82786E] focus:border-[#86A58C] focus:ring-1 focus:ring-[#86A58C] focus:outline-none transition-colors"
                     />
                   </div>
 
@@ -474,14 +474,14 @@ export default function BookAppointmentPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, privacyConsent: e.target.checked })
                         }
-                        className="mt-1 w-4 h-4 rounded-none accent-sage focus:ring-sage"
+                        className="mt-1 w-4 h-4 rounded-none accent-[#86A58C] focus:ring-[#86A58C]"
                       />
-                      <span className="text-xs text-taupe leading-relaxed">
+                      <span className="text-xs text-[#C6BCAE] leading-relaxed">
                         I consent to receive consultation scheduling communications from AURELIS Dental Studio. My details will be handled with medical confidentiality.
                       </span>
                     </label>
                     {errors.privacyConsent && (
-                      <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
+                      <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         <span>{errors.privacyConsent}</span>
                       </p>
@@ -493,7 +493,7 @@ export default function BookAppointmentPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-4 bg-sage hover:bg-sage-dark active:bg-sage-dark disabled:bg-sage/50 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 shadow-sage flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage"
+                      className="w-full py-4 bg-[#66866D] hover:bg-[#86A58C] active:bg-[#66866D] disabled:bg-[#66866D]/50 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 shadow-sage flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#86A58C]"
                     >
                       {isSubmitting ? (
                         <span>Verifying &amp; Registering...</span>

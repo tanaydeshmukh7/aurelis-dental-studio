@@ -31,12 +31,12 @@ export default function GalleryPage() {
   }, [activeCategory, items]);
 
   return (
-    <div className="min-h-screen bg-ivory text-espresso flex flex-col">
+    <div className="min-h-screen bg-[#DCD4C8] text-espresso flex flex-col">
       <SiteNavbar />
 
       <main className="flex-1">
         {/* Gallery Header */}
-        <section className="pt-28 sm:pt-36 pb-14 bg-ivory border-b border-espresso/10">
+        <section className="pt-28 sm:pt-36 pb-14 bg-[#DCD4C8] border-b border-[#B8ADA0]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
             <Breadcrumbs items={[{ label: "Gallery" }]} />
 
@@ -61,7 +61,7 @@ export default function GalleryPage() {
         </section>
 
         {/* Filter Bar with Sage Green Active State */}
-        <section className="py-6 bg-sand/30 border-b border-espresso/10 sticky top-[73px] z-30 backdrop-blur-md bg-sand/90">
+        <section className="py-6 bg-[#CFC5B7]/95 border-b border-[#B8ADA0] sticky top-[73px] z-30 backdrop-blur-md">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none w-full sm:w-auto">
               {GALLERY_CATEGORIES.map((cat) => (
@@ -71,7 +71,7 @@ export default function GalleryPage() {
                   className={`px-4 py-2 text-xs uppercase tracking-[0.16em] whitespace-nowrap transition-all border ${
                     activeCategory === cat
                       ? "bg-sage text-white border-sage shadow-sage font-medium"
-                      : "bg-transparent text-taupe border-espresso/15 hover:border-sage hover:text-espresso"
+                      : "bg-transparent text-taupe border-[#B8ADA0] hover:border-sage hover:text-espresso"
                   }`}
                 >
                   {cat}
@@ -86,24 +86,24 @@ export default function GalleryPage() {
         </section>
 
         {/* Rich Editorial Image Grid */}
-        <section className="py-16 sm:py-24 bg-ivory">
+        <section className="py-16 sm:py-24 bg-[#DCD4C8]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filteredItems.map((item) => (
                 <div
                   key={item.id}
                   onClick={() => setSelectedPhoto(item)}
-                  className="bg-sand/20 border border-espresso/8 overflow-hidden group cursor-pointer hover:border-sage/50 hover:shadow-card transition-all duration-300"
+                  className="bg-[#CFC5B7] border border-[#B8ADA0] overflow-hidden group cursor-pointer hover:border-sage shadow-card transition-all duration-300"
                 >
-                  <div className="relative aspect-[4/3] w-full bg-sand overflow-hidden">
+                  <div className="relative aspect-[4/3] w-full bg-stone-dark overflow-hidden border-b border-[#B8ADA0]">
                     <Image
                       src={item.image}
                       alt={item.alt}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                      className="object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-[1.02]"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-[1.02] brightness-[0.96]"
                     />
-                    <div className="absolute top-3 left-3 bg-ivory/95 backdrop-blur-sm px-2.5 py-0.5 text-[9px] uppercase tracking-[0.18em] text-sage-dark font-medium border border-espresso/10">
+                    <div className="absolute top-3 left-3 bg-[#DCD4C8]/95 backdrop-blur-sm px-2.5 py-0.5 text-[9px] uppercase tracking-[0.18em] text-sage-dark font-medium border border-[#B8ADA0]">
                       {item.category}
                     </div>
                   </div>

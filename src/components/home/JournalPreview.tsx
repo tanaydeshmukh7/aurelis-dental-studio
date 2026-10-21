@@ -7,11 +7,11 @@ export default function JournalPreview() {
   const previewArticles = BLOG_ARTICLES.slice(0, 3);
 
   return (
-    <section className="py-24 sm:py-32 bg-ivory border-t border-espresso/10">
+    <section className="py-24 sm:py-32 bg-[#DCD4C8] border-t border-[#B8ADA0]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-20 pb-8 border-b border-espresso/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-20 pb-8 border-b border-[#B8ADA0]">
           <div>
             <div className="flex items-center gap-2.5 mb-3">
               <span className="w-5 h-[1.5px] bg-sage" />
@@ -41,18 +41,18 @@ export default function JournalPreview() {
           {previewArticles.map((article) => (
             <article
               key={article.slug}
-              className="bg-sand/20 border border-espresso/8 flex flex-col justify-between group hover:border-sage/40 transition-all duration-300"
+              className="bg-[#CFC5B7] border border-[#B8ADA0] flex flex-col justify-between group hover:border-sage transition-all duration-300 shadow-subtle"
             >
               <div>
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-sand">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-dark border-b border-[#B8ADA0]">
                   <Image
                     src={article.coverImage}
                     alt={article.coverImageAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.96]"
                   />
-                  <div className="absolute top-3 left-3 bg-ivory/95 backdrop-blur-sm px-2.5 py-1 text-[9px] uppercase tracking-[0.18em] text-sage-dark font-medium border border-espresso/5 shadow-sm">
+                  <div className="absolute top-3 left-3 bg-[#DCD4C8]/95 backdrop-blur-sm px-2.5 py-1 text-[9px] uppercase tracking-[0.18em] text-sage-dark font-medium border border-[#B8ADA0] shadow-sm">
                     {article.category}
                   </div>
                 </div>
@@ -75,7 +75,7 @@ export default function JournalPreview() {
                 </div>
               </div>
 
-              <div className="p-6 pt-0 border-t border-espresso/8 flex items-center justify-between">
+              <div className="p-6 pt-0 border-t border-[#B8ADA0] flex items-center justify-between">
                 <span className="text-[11px] font-serif italic text-taupe">
                   {article.author.role.split(" (")[0]}
                 </span>

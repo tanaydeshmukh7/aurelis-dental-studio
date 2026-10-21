@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-ivory text-espresso flex flex-col">
+    <div className="min-h-screen bg-[#DCD4C8] text-espresso flex flex-col">
       <SiteNavbar />
 
       <main className="flex-1">
@@ -28,7 +28,7 @@ export default function AboutPage() {
         />
 
         {/* The Architectural Vision Section */}
-        <section className="py-20 sm:py-28 bg-ivory">
+        <section className="py-20 sm:py-28 bg-[#DCD4C8]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               
@@ -54,7 +54,7 @@ export default function AboutPage() {
                   library rather than a clinic waiting room.
                 </p>
 
-                <div className="pt-4 grid grid-cols-2 gap-6 border-t border-espresso/10">
+                <div className="pt-4 grid grid-cols-2 gap-6 border-t border-[#B8ADA0]">
                   <div>
                     <h3 className="font-serif text-xl text-espresso">Acoustic Isolation</h3>
                     <p className="text-xs text-taupe mt-1">
@@ -71,13 +71,13 @@ export default function AboutPage() {
               </div>
 
               <div className="lg:col-span-6 relative">
-                <div className="relative aspect-[4/3] w-full bg-sand overflow-hidden shadow-card border border-espresso/8">
+                <div className="relative aspect-[4/3] w-full bg-stone-dark overflow-hidden shadow-card border border-[#B8ADA0]">
                   <Image
                     src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85"
                     alt="Biophilic warm stone and wood textures at Aurelis reception"
                     fill
                     sizes="(max-width: 1024px) 100vw, 600px"
-                    className="object-cover"
+                    className="object-cover brightness-[0.96]"
                   />
                 </div>
                 <p className="text-right text-[11px] text-taupe mt-2 italic font-serif">
@@ -90,16 +90,16 @@ export default function AboutPage() {
         </section>
 
         {/* The Biomimetic Principle */}
-        <section className="py-20 bg-sand/30 border-y border-espresso/10">
+        <section className="py-20 bg-[#302D28] text-[#F0E9DF] border-y border-[#514A41]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
             <div className="max-w-3xl mb-12">
-              <span className="text-[10px] uppercase tracking-[0.25em] text-sage-dark font-semibold block mb-2">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-sage font-semibold block mb-2">
                 CLINICAL PRINCIPLES
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-espresso font-normal">
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#F0E9DF] font-normal">
                 Biomimetic dentistry: Nature is the blueprint.
               </h2>
-              <p className="mt-3 text-sm sm:text-base text-taupe leading-relaxed">
+              <p className="mt-3 text-sm sm:text-base text-[#C6BCAE] leading-relaxed">
                 Biomimetic dentistry means &ldquo;mimicking nature.&rdquo; Traditional dentistry
                 frequently removed healthy tooth structure to create mechanical retention for
                 bulky crowns. Our philosophy is the reverse: we rebuild teeth using adhesive
@@ -108,32 +108,32 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-ivory p-8 border border-espresso/10 shadow-subtle border-t-2 border-t-sage">
+              <div className="bg-[#24221F] p-8 border border-[#514A41] shadow-card border-t-2 border-t-sage">
                 <span className="font-serif text-3xl text-sage font-light block mb-3">01</span>
-                <h3 className="font-serif text-xl text-espresso font-normal mb-2">
+                <h3 className="font-serif text-xl text-[#F0E9DF] font-normal mb-2">
                   Enamel Preservation
                 </h3>
-                <p className="text-xs sm:text-sm text-taupe leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#C6BCAE] leading-relaxed">
                   We treat natural enamel as non-renewable biological treasure. Every preparation is minimal-prep or no-prep whenever viable.
                 </p>
               </div>
 
-              <div className="bg-ivory p-8 border border-espresso/10 shadow-subtle border-t-2 border-t-sage">
+              <div className="bg-[#24221F] p-8 border border-[#514A41] shadow-card border-t-2 border-t-sage">
                 <span className="font-serif text-3xl text-sage font-light block mb-3">02</span>
-                <h3 className="font-serif text-xl text-espresso font-normal mb-2">
+                <h3 className="font-serif text-xl text-[#F0E9DF] font-normal mb-2">
                   Adhesive Stress Absorption
                 </h3>
-                <p className="text-xs sm:text-sm text-taupe leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#C6BCAE] leading-relaxed">
                   Advanced multi-layer bonding agents absorb bite stress evenly, preventing catastrophic root fractures down the road.
                 </p>
               </div>
 
-              <div className="bg-ivory p-8 border border-espresso/10 shadow-subtle border-t-2 border-t-sage">
+              <div className="bg-[#24221F] p-8 border border-[#514A41] shadow-card border-t-2 border-t-sage">
                 <span className="font-serif text-3xl text-sage font-light block mb-3">03</span>
-                <h3 className="font-serif text-xl text-espresso font-normal mb-2">
+                <h3 className="font-serif text-xl text-[#F0E9DF] font-normal mb-2">
                   Pulp Vitality Safeguards
                 </h3>
-                <p className="text-xs sm:text-sm text-taupe leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#C6BCAE] leading-relaxed">
                   By avoiding unnecessary tooth cutting and controlling thermal heat, we protect nerve vitality and avoid unnecessary root canals.
                 </p>
               </div>
@@ -142,16 +142,16 @@ export default function AboutPage() {
         </section>
 
         {/* Koregaon Park Neighborhood Section */}
-        <section className="py-20 sm:py-28 bg-ivory">
+        <section className="py-20 sm:py-28 bg-[#DCD4C8]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 relative">
-              <div className="relative aspect-[4/3] w-full bg-sand overflow-hidden shadow-card border border-espresso/10">
+              <div className="relative aspect-[4/3] w-full bg-stone-dark overflow-hidden shadow-card border border-[#B8ADA0]">
                 <Image
                   src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85"
                   alt="Tranquil lane setting in Koregaon Park Pune"
                   fill
                   sizes="(max-width: 1024px) 100vw, 550px"
-                  className="object-cover"
+                  className="object-cover brightness-[0.96]"
                 />
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function AboutPage() {
                 </Link>
                 <Link
                   href="/our-team"
-                  className="px-6 py-3 border border-espresso/20 text-xs uppercase tracking-[0.18em] text-taupe hover:text-espresso hover:border-sage transition-colors"
+                  className="px-6 py-3 border border-[#B8ADA0] text-xs uppercase tracking-[0.18em] text-taupe hover:text-espresso hover:border-sage transition-colors bg-stone-dark/30"
                 >
                   Meet Our Clinicians
                 </Link>

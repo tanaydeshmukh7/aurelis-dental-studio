@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-ivory text-espresso flex flex-col">
+    <div className="min-h-screen bg-[#DCD4C8] text-[#28231F] flex flex-col">
       <SiteNavbar />
 
       <main className="flex-1">
@@ -55,14 +55,14 @@ export default function PrivacyPolicyPage() {
 
         <section className="py-20 lg:py-28 max-w-4xl mx-auto px-5 sm:px-8">
           <div className="space-y-12">
-            <div className="border-b border-espresso/10 pb-8">
-              <span className="text-xs uppercase tracking-[0.2em] text-sage font-medium">
+            <div className="border-b border-[#B8ADA0] pb-8">
+              <span className="text-xs uppercase tracking-[0.2em] text-[#66866D] font-medium">
                 Effective Date: October 2026
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-espresso font-light mt-2">
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#28231F] font-light mt-2">
                 Our Commitment to Discretion & Security
               </h2>
-              <p className="text-sm sm:text-base text-taupe leading-relaxed mt-4">
+              <p className="text-sm sm:text-base text-[#514A42] leading-relaxed mt-4">
                 This policy outlines our procedures regarding the collection, use, and protection
                 of health records and inquiries collected through our Koregaon Park clinic and website.
               </p>
@@ -72,16 +72,16 @@ export default function PrivacyPolicyPage() {
               {sections.map((sec, idx) => {
                 const Icon = sec.icon;
                 return (
-                  <div key={idx} className="bg-sand/30 border border-espresso/10 p-6 sm:p-8 space-y-4">
+                  <div key={idx} className="bg-[#CFC5B7]/60 border border-[#B8ADA0] p-6 sm:p-8 space-y-4 shadow-card">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 bg-sage/15 rounded-full flex items-center justify-center text-sage shrink-0">
+                      <div className="w-9 h-9 bg-[#66866D]/15 rounded-full flex items-center justify-center text-[#66866D] shrink-0">
                         <Icon className="w-4 h-4" />
                       </div>
-                      <h3 className="font-serif text-xl sm:text-2xl text-espresso font-light">
+                      <h3 className="font-serif text-xl sm:text-2xl text-[#28231F] font-light">
                         {sec.title}
                       </h3>
                     </div>
-                    <p className="text-sm sm:text-base text-taupe leading-relaxed pl-12">
+                    <p className="text-sm sm:text-base text-[#514A42] leading-relaxed pl-12">
                       {sec.content}
                     </p>
                   </div>
@@ -89,18 +89,18 @@ export default function PrivacyPolicyPage() {
               })}
             </div>
 
-            <div className="bg-sand/40 p-8 border border-espresso/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="bg-[#CFC5B7]/80 p-8 border border-[#B8ADA0] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-card">
               <div>
-                <h4 className="font-serif text-xl text-espresso font-light">
+                <h4 className="font-serif text-xl text-[#28231F] font-light">
                   Questions regarding your privacy?
                 </h4>
-                <p className="text-xs sm:text-sm text-taupe mt-1">
+                <p className="text-xs sm:text-sm text-[#514A42] mt-1">
                   Our studio director is available to answer any questions about clinical records.
                 </p>
               </div>
               <Link
                 href="/contact"
-                className="px-6 py-3 bg-sage hover:bg-sage-dark text-white text-xs uppercase tracking-[0.18em] font-medium transition-colors shrink-0 shadow-sm"
+                className="px-6 py-3 bg-[#66866D] hover:bg-[#86A58C] text-white text-xs uppercase tracking-[0.18em] font-medium transition-colors shrink-0 shadow-sm"
               >
                 Contact Concierge
               </Link>

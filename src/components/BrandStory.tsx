@@ -4,7 +4,7 @@ import { ArrowUpRight, ShieldCheck, HeartHandshake, Eye, Sparkles } from "lucide
 
 export default function BrandStory() {
   return (
-    <section id="story" className="py-24 sm:py-32 bg-ivory border-t border-espresso/10 overflow-hidden">
+    <section id="story" className="py-24 sm:py-32 bg-stone border-t border-stone-border overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
@@ -44,9 +44,9 @@ export default function BrandStory() {
             </div>
 
             {/* Core Values Strip */}
-            <div className="mt-8 grid grid-cols-2 gap-4 py-6 border-y border-espresso/10">
+            <div className="mt-8 grid grid-cols-2 gap-4 py-6 border-y border-stone-border">
               <div className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-sand/60 flex items-center justify-center shrink-0 mt-0.5">
+                <span className="w-6 h-6 rounded-full bg-stone-dark flex items-center justify-center shrink-0 mt-0.5">
                   <HeartHandshake className="w-3.5 h-3.5 text-sage-dark" />
                 </span>
                 <div>
@@ -56,7 +56,7 @@ export default function BrandStory() {
               </div>
 
               <div className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-sand/60 flex items-center justify-center shrink-0 mt-0.5">
+                <span className="w-6 h-6 rounded-full bg-stone-dark flex items-center justify-center shrink-0 mt-0.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-sage-dark" />
                 </span>
                 <div>
@@ -69,7 +69,7 @@ export default function BrandStory() {
             <div className="mt-10 flex flex-wrap items-center gap-8">
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-[0.2em] font-medium text-espresso hover:text-sage-dark transition-colors border-b border-espresso/20 pb-1"
+                className="group inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-[0.2em] font-medium text-espresso hover:text-sage-dark transition-colors border-b border-espresso/30 pb-1"
               >
                 <span>Read Our Full Story</span>
                 <ArrowUpRight className="w-4 h-4 text-sage group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -86,7 +86,7 @@ export default function BrandStory() {
 
           {/* Right Column: Serene Architectural Interior */}
           <div className="lg:col-span-6 relative">
-            <div className="relative aspect-[4/5] w-full max-w-lg mx-auto bg-sand overflow-hidden shadow-card border border-espresso/8 group">
+            <div className="relative aspect-[4/5] w-full max-w-lg mx-auto bg-stone-dark overflow-hidden shadow-card border border-stone-border group">
               <Image
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85"
                 alt="Architectural interior of AURELIS consultation lounge in Koregaon Park"
@@ -96,7 +96,7 @@ export default function BrandStory() {
               />
 
               {/* Vertical Editorial Caption Along Image Edge */}
-              <div className="hidden sm:block absolute bottom-6 -right-1 origin-bottom-right rotate-90 translate-x-full text-[9px] uppercase tracking-[0.3em] text-taupe bg-white/95 backdrop-blur-sm px-3 py-1 border border-espresso/10">
+              <div className="hidden sm:block absolute bottom-6 -right-1 origin-bottom-right rotate-90 translate-x-full text-[9px] uppercase tracking-[0.3em] text-espresso bg-stone/95 backdrop-blur-sm px-3 py-1 border border-stone-border">
                 Koregaon Park Studio Lounge · Pune
               </div>
             </div>

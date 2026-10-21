@@ -9,10 +9,10 @@ export default function StudioEnvironment() {
   const activeSpace = STUDIO_SPACES[activeSpaceIdx];
 
   return (
-    <section id="studio" className="py-24 sm:py-32 bg-charcoal text-ivory relative overflow-hidden">
+    <section id="studio" className="py-24 sm:py-32 bg-[#24221F] text-[#F0E9DF] relative overflow-hidden border-t border-[#514A41]">
       
       {/* Subtle texture / grain overlay */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#F7F5F0_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#F0E9DF_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         
@@ -25,14 +25,14 @@ export default function StudioEnvironment() {
             </span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-[1.12]">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#F0E9DF] font-normal tracking-tight leading-[1.12]">
             Modern dentistry. <br />
             <span className="italic font-light text-sage-light">
               A more thoughtful experience.
             </span>
           </h2>
 
-          <p className="mt-6 text-base sm:text-lg text-white/70 font-normal leading-relaxed max-w-2xl">
+          <p className="mt-6 text-base sm:text-lg text-[#C6BCAE] font-normal leading-relaxed max-w-2xl">
             Designed around clarity, comfort, and care at every step. We curated an
             architectural sanctuary using fluted stone, warm oak, and acoustic damping to
             dispel dental apprehension before you even take a seat.
@@ -40,7 +40,7 @@ export default function StudioEnvironment() {
         </div>
 
         {/* Space Selector Tabs */}
-        <div className="flex flex-wrap gap-3 sm:gap-4 mb-8 border-b border-white/10 pb-4">
+        <div className="flex flex-wrap gap-3 sm:gap-4 mb-8 border-b border-[#514A41] pb-4">
           {STUDIO_SPACES.map((space, idx) => (
             <button
               key={space.title}
@@ -48,7 +48,7 @@ export default function StudioEnvironment() {
               className={`text-xs uppercase tracking-[0.2em] py-2 px-3 transition-all duration-300 relative ${
                 activeSpaceIdx === idx
                   ? "text-sage-light font-medium"
-                  : "text-white/60 hover:text-white"
+                  : "text-[#C6BCAE] hover:text-[#F0E9DF]"
               }`}
             >
               <span>{space.title}</span>
@@ -63,7 +63,7 @@ export default function StudioEnvironment() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Main Visual Image Frame */}
-          <div className="lg:col-span-8 relative aspect-[16/10] sm:aspect-[16/9] w-full bg-charcoal-deep overflow-hidden border border-white/10 shadow-2xl group">
+          <div className="lg:col-span-8 relative aspect-[16/10] sm:aspect-[16/9] w-full bg-[#1C1A17] overflow-hidden border border-[#514A41] shadow-2xl group">
             <Image
               key={activeSpace.image}
               src={activeSpace.image}
@@ -74,7 +74,7 @@ export default function StudioEnvironment() {
             />
 
             {/* Gradient vignette for contrast */}
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-deep/90 via-charcoal-deep/30 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#24221F]/90 via-[#24221F]/30 to-transparent pointer-events-none" />
 
             {/* Text Overlay inside Image */}
             <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8">
@@ -90,11 +90,11 @@ export default function StudioEnvironment() {
           {/* Descriptive Side Card */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
-              <p className="text-sm sm:text-base text-white/80 leading-relaxed font-light">
+              <p className="text-sm sm:text-base text-[#C6BCAE] leading-relaxed font-light">
                 {activeSpace.description}
               </p>
 
-              <div className="pt-4 border-t border-white/10 space-y-3">
+              <div className="pt-4 border-t border-[#514A41] space-y-3">
                 <span className="text-[10px] uppercase tracking-[0.22em] text-sage-light block font-semibold">
                   Architectural Specifications
                 </span>

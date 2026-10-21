@@ -19,9 +19,9 @@ export default function TrustStrip() {
   ];
 
   return (
-    <section id="trust" className="border-y border-espresso/10 bg-sand/40 py-6 sm:py-7">
+    <section id="trust" className="border-y border-[#514A41] bg-[#302D28] py-7 sm:py-8 text-[#F0E9DF]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-espresso/10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-[#514A41]">
           {pillars.map((pillar, idx) => (
             <div
               key={pillar.label}
@@ -31,11 +31,11 @@ export default function TrustStrip() {
             >
               <div className="flex items-center gap-2 mb-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-sage" />
-                <span className="font-serif text-sm sm:text-base font-normal text-espresso leading-snug">
+                <span className="font-serif text-sm sm:text-base font-normal text-[#F0E9DF] leading-snug">
                   {pillar.label}
                 </span>
               </div>
-              <p className="text-[11px] sm:text-xs text-taupe tracking-normal pl-3.5">
+              <p className="text-[11px] sm:text-xs text-[#C6BCAE] tracking-normal pl-3.5">
                 {pillar.detail}
               </p>
             </div>

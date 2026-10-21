@@ -44,16 +44,16 @@ export default function MobileMenu({ isOpen, onClose, onOpenBookingModal }: Mobi
       role="dialog"
       aria-modal="true"
       aria-label="Navigation Overlay"
-      className="fixed inset-0 z-[60] bg-ivory flex flex-col justify-between overflow-y-auto animate-fade-in"
+      className="fixed inset-0 z-[60] bg-stone flex flex-col justify-between overflow-y-auto animate-fade-in text-espresso"
     >
       {/* Top Header Bar inside Drawer */}
-      <div className="sticky top-0 bg-ivory/95 backdrop-blur-md z-20 px-6 sm:px-8 py-4 sm:py-5 border-b border-espresso/10 flex items-center justify-between">
+      <div className="sticky top-0 bg-stone/95 backdrop-blur-md z-20 px-6 sm:px-8 py-4 sm:py-5 border-b border-stone-border flex items-center justify-between">
         <BrandLogo variant="dark" showMark={true} onClick={onClose} />
 
         {/* Close Button with generous touch target */}
         <button
           onClick={onClose}
-          className="w-11 h-11 border border-espresso/15 flex items-center justify-center text-espresso hover:bg-espresso hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage"
+          className="w-11 h-11 border border-stone-border flex items-center justify-center text-espresso hover:bg-espresso hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage"
           aria-label="Close menu"
         >
           <X className="w-5 h-5 stroke-[1.5]" />
@@ -64,12 +64,12 @@ export default function MobileMenu({ isOpen, onClose, onOpenBookingModal }: Mobi
       <div className="px-6 sm:px-8 py-6 flex-1 flex flex-col justify-between max-w-xl mx-auto w-full">
         {/* Navigation Link Stack */}
         <nav className="space-y-2 sm:space-y-3" aria-label="Mobile Directory">
-          <div className="border-b border-espresso/10 pb-3 mb-4 flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-taupe font-semibold">
+          <div className="border-b border-stone-border pb-3 mb-4 flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-taupe font-semibold">
             <span>Studio Directory</span>
             <span className="text-sage font-medium">Pune, India</span>
           </div>
 
-          <div className="divide-y divide-espresso/8">
+          <div className="divide-y divide-stone-border/60">
             {MAIN_NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href;
               const isTreatments = item.hasSubmenu;
@@ -168,8 +168,8 @@ export default function MobileMenu({ isOpen, onClose, onOpenBookingModal }: Mobi
         </nav>
 
         {/* Editorial Photo & Bottom Actions */}
-        <div className="mt-8 pt-6 border-t border-espresso/10">
-          <div className="relative aspect-[16/9] w-full bg-sand overflow-hidden shadow-subtle mb-5">
+        <div className="mt-8 pt-6 border-t border-stone-border">
+          <div className="relative aspect-[16/9] w-full bg-stone-dark overflow-hidden shadow-subtle mb-5 border border-stone-border">
             <Image
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
               alt="Aurelis Studio Lounge in Koregaon Park Pune"
@@ -199,7 +199,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenBookingModal }: Mobi
                   onClose();
                   onOpenBookingModal();
                 }}
-                className="w-full py-2.5 text-[11px] uppercase tracking-[0.16em] text-taupe hover:text-espresso border border-espresso/15 transition-colors"
+                className="w-full py-2.5 text-[11px] uppercase tracking-[0.16em] text-taupe hover:text-espresso border border-stone-border transition-colors bg-stone-dark/30"
               >
                 Instant Reservation Modal
               </button>
@@ -207,7 +207,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenBookingModal }: Mobi
           </div>
 
           {/* Footer Contact Shortcut */}
-          <div className="mt-6 pt-4 border-t border-espresso/10 grid grid-cols-2 gap-4 text-xs text-taupe">
+          <div className="mt-6 pt-4 border-t border-stone-border grid grid-cols-2 gap-4 text-xs text-taupe">
             <div>
               <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-espresso flex items-center gap-1 mb-0.5">
                 <MapPin className="w-3 h-3 text-sage" />

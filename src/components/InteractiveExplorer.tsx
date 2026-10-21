@@ -18,7 +18,7 @@ export default function InteractiveExplorer({
   const current = TREATMENTS[activeIndex];
 
   return (
-    <section className="py-24 sm:py-32 bg-sand/30 border-t border-espresso/10 overflow-hidden">
+    <section className="py-24 sm:py-32 bg-[#CFC5B7] border-t border-[#B8ADA0] overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* Section Header */}
@@ -39,22 +39,22 @@ export default function InteractiveExplorer({
         </div>
 
         {/* Interactive Studio Stage */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center bg-ivory p-6 sm:p-10 lg:p-12 shadow-card border border-espresso/8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center bg-[#DCD4C8] p-6 sm:p-10 lg:p-12 shadow-card border border-[#B8ADA0]">
           
           {/* Left / Side 1: Large Visual Display */}
           <div className="lg:col-span-6 relative">
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full bg-sand overflow-hidden">
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full bg-stone-dark overflow-hidden border border-[#B8ADA0]">
               <Image
                 key={current.id}
                 src={current.image}
                 alt={current.imageAlt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 600px"
-                className="object-cover transition-opacity duration-500 filter saturate-[0.96]"
+                className="object-cover transition-opacity duration-500 filter saturate-[0.96] brightness-[0.95]"
               />
 
               {/* Inset Badge */}
-              <div className="absolute top-4 left-4 bg-ivory/95 backdrop-blur-sm px-3.5 py-1 text-[11px] font-serif text-espresso border border-espresso/10">
+              <div className="absolute top-4 left-4 bg-[#DCD4C8]/95 backdrop-blur-sm px-3.5 py-1 text-[11px] font-serif text-espresso border border-[#B8ADA0]">
                 Aurelis Focus: {current.title}
               </div>
 
@@ -76,7 +76,7 @@ export default function InteractiveExplorer({
           {/* Right / Side 2: Selectable Interactive Menu & Detail Content */}
           <div className="lg:col-span-6 flex flex-col justify-between">
             {/* Category Selector Tabs with Sage Green Active State */}
-            <div className="flex flex-wrap gap-2 pb-6 border-b border-espresso/10 mb-6" role="tablist">
+            <div className="flex flex-wrap gap-2 pb-6 border-b border-[#B8ADA0] mb-6" role="tablist">
               {TREATMENTS.map((item, idx) => (
                 <button
                   key={item.id}
@@ -86,7 +86,7 @@ export default function InteractiveExplorer({
                   className={`px-3.5 sm:px-4 py-2 text-xs uppercase tracking-[0.16em] transition-all duration-200 border ${
                     activeIndex === idx
                       ? "bg-sage text-white border-sage shadow-sage font-medium"
-                      : "bg-transparent text-taupe border-espresso/15 hover:border-sage hover:text-espresso"
+                      : "bg-transparent text-taupe border-[#B8ADA0] hover:border-sage hover:text-espresso"
                   }`}
                 >
                   <span className="font-serif mr-1.5 opacity-80">{item.number}</span>
@@ -110,7 +110,7 @@ export default function InteractiveExplorer({
               </div>
 
               {/* Treatment Suitability Points */}
-              <div className="bg-sand/30 p-4 sm:p-5 border-l-2 border-sage">
+              <div className="bg-[#CFC5B7]/60 p-4 sm:p-5 border-l-2 border-sage border-y border-r border-[#B8ADA0]/60">
                 <p className="text-[11px] uppercase tracking-[0.18em] font-semibold text-espresso mb-2">
                   Common Considerations:
                 </p>
@@ -136,7 +136,7 @@ export default function InteractiveExplorer({
 
                 <button
                   onClick={() => onExploreDetail(current.id)}
-                  className="px-5 py-3 text-xs uppercase tracking-[0.18em] text-taupe hover:text-espresso border border-espresso/20 hover:border-sage transition-colors"
+                  className="px-5 py-3 text-xs uppercase tracking-[0.18em] text-taupe hover:text-espresso border border-[#B8ADA0] hover:border-sage transition-colors bg-stone-dark/20"
                 >
                   View Clinical Protocol
                 </button>

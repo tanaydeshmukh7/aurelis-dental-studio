@@ -39,11 +39,11 @@ export default function PatientJourney() {
   ];
 
   return (
-    <section id="philosophy" className="py-24 sm:py-32 bg-ivory border-t border-espresso/10">
+    <section id="philosophy" className="py-24 sm:py-32 bg-[#DCD4C8] border-t border-[#B8ADA0]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 sm:mb-20 pb-8 border-b border-espresso/10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 sm:mb-20 pb-8 border-b border-[#B8ADA0]">
           <div>
             <div className="flex items-center gap-2.5 mb-3">
               <span className="w-5 h-[1.5px] bg-sage" />
@@ -70,14 +70,14 @@ export default function PatientJourney() {
             return (
               <div
                 key={pillar.number}
-                className="bg-white/70 border border-espresso/10 p-8 sm:p-10 flex flex-col justify-between shadow-subtle hover:border-sage/50 hover:shadow-card transition-all duration-300 group"
+                className="bg-[#CFC5B7] border border-[#B8ADA0] p-8 sm:p-10 flex flex-col justify-between shadow-subtle hover:border-sage hover:shadow-card transition-all duration-300 group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <span className="font-serif text-3xl sm:text-4xl text-champagne font-light">
                       {pillar.number}
                     </span>
-                    <span className="w-9 h-9 rounded-full bg-sand/40 flex items-center justify-center text-sage group-hover:bg-sage/15 transition-colors">
+                    <span className="w-9 h-9 rounded-full bg-[#BEB2A2]/40 flex items-center justify-center text-sage group-hover:bg-sage/15 transition-colors">
                       <Icon className="w-4 h-4 text-sage" />
                     </span>
                   </div>
@@ -94,7 +94,7 @@ export default function PatientJourney() {
                   </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-espresso/8 flex items-center justify-between text-[11px] text-taupe/80">
+                <div className="mt-8 pt-4 border-t border-[#B8ADA0] flex items-center justify-between text-[11px] text-taupe">
                   <span className="font-serif italic">Aurelis Standard</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-sage" />
                 </div>

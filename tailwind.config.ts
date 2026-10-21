@@ -9,43 +9,64 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Muted Luxury Darkened Palette Tokens
+        stone: {
+          DEFAULT: "#DCD4C8", // Main background
+          light: "#E5DFD4",
+          dark: "#CFC5B7",   // Secondary background
+          muted: "#BEB2A2",  // Muted section background
+          border: "#B8ADA0", // Light-surface borders
+        },
         ivory: {
-          DEFAULT: "#F7F5F0",
-          light: "#FAF9F6",
-          dark: "#EFECE5",
+          DEFAULT: "#DCD4C8", // Muted stone (no bright washed-out F7F5F0)
+          light: "#E5DFD4",
+          dark: "#CFC5B7",
+          warm: "#F0E9DF",   // Light text on dark
         },
         sand: {
-          DEFAULT: "#E9E2D7",
-          light: "#F0EAE0",
-          dark: "#DDD5C7",
+          DEFAULT: "#CFC5B7", // Secondary background
+          light: "#DCD4C8",
+          dark: "#BEB2A2",   // Muted section
+          border: "#B8ADA0",
         },
         sage: {
           DEFAULT: "#86A58C",
-          dark: "#6F8E75",
-          light: "#A1BCAB",
-          subtle: "#EDF3EE",
-          border: "#C4D5C8",
+          dark: "#66866D",
+          light: "#9BB3A0",
+          subtle: "#3A3F3B",
+          border: "#66866D",
         },
         champagne: {
           DEFAULT: "#B69A72",
-          light: "#CDB694",
+          light: "#C7AF8A",
           dark: "#9E825A",
-          subtle: "#F5EFE6",
+          subtle: "#3B362F",
         },
         espresso: {
-          DEFAULT: "#28231F",
-          light: "#3A332E",
-          dark: "#1B1714",
+          DEFAULT: "#28231F", // Main text on light
+          light: "#514A42",   // Secondary text on light
+          dark: "#24221F",    // Deep espresso background
+          surface: "#302D28", // Dark section background
+          border: "#514A41",  // Dark-surface borders
         },
         taupe: {
-          DEFAULT: "#82786E",
-          light: "#9A9086",
-          dark: "#6A6157",
+          DEFAULT: "#514A42", // Secondary text on light
+          light: "#6A6157",
+          dark: "#3D3730",
+          muted: "#C6BCAE",   // Secondary text on dark
         },
         charcoal: {
-          DEFAULT: "#242522",
-          surface: "#2D2E2A",
-          deep: "#1C1D1A",
+          DEFAULT: "#302D28", // Dark section background
+          surface: "#24221F", // Deep espresso background
+          deep: "#1C1A17",
+          border: "#514A41",
+        },
+        darkSection: {
+          DEFAULT: "#302D28",
+          deep: "#24221F",
+          text: "#F0E9DF",
+          secondary: "#C6BCAE",
+          border: "#514A41",
         },
       },
       fontFamily: {

@@ -6,7 +6,7 @@ export default function BotanicalMeadow() {
   return (
     <div className="absolute inset-x-0 bottom-0 h-44 sm:h-56 lg:h-72 pointer-events-none overflow-hidden z-20">
       {/* Soft Luminous Sun Haze & Meadow Ambient Glow */}
-      <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-ivory via-ivory/60 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-stone via-stone/70 to-transparent" />
       <div className="absolute right-1/4 bottom-8 w-96 h-48 bg-gradient-to-tr from-sage/15 via-champagne/10 to-transparent rounded-full blur-3xl" />
 
       {/* -------------------------------------------------------- */}
@@ -91,16 +91,16 @@ export default function BotanicalMeadow() {
       >
         <defs>
           <linearGradient id="grassGradBack" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#86A58C" stopOpacity="0.35" />
-            <stop offset="70%" stopColor="#E9E2D7" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#F7F5F0" stopOpacity="0.95" />
+            <stop offset="0%" stopColor="#86A58C" stopOpacity="0.4" />
+            <stop offset="70%" stopColor="#CFC5B7" stopOpacity="0.75" />
+            <stop offset="100%" stopColor="#DCD4C8" stopOpacity="1" />
           </linearGradient>
 
           <linearGradient id="grassGradFront" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#6F8E75" stopOpacity="0.85" />
+            <stop offset="0%" stopColor="#66866D" stopOpacity="0.85" />
             <stop offset="40%" stopColor="#86A58C" stopOpacity="0.7" />
-            <stop offset="85%" stopColor="#E9E2D7" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#F7F5F0" stopOpacity="1" />
+            <stop offset="85%" stopColor="#CFC5B7" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#DCD4C8" stopOpacity="1" />
           </linearGradient>
 
           <radialGradient id="sunGlint" cx="50%" cy="50%" r="50%">

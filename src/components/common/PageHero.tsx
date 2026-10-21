@@ -23,9 +23,9 @@ export default function PageHero({
   badge,
 }: PageHeroProps) {
   return (
-    <section className="pt-28 sm:pt-36 pb-16 sm:pb-20 bg-ivory border-b border-espresso/10 relative overflow-hidden">
+    <section className="pt-28 sm:pt-36 pb-16 sm:pb-20 bg-[#DCD4C8] border-b border-[#B8ADA0] relative overflow-hidden">
       {/* Subtle background ambient tone */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-sand/30 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-[#CFC5B7]/50 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
@@ -59,17 +59,17 @@ export default function PageHero({
           {/* Optional Hero Image Frame */}
           {image && (
             <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-              <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full bg-sand overflow-hidden shadow-card border border-espresso/8">
+              <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full bg-stone-dark overflow-hidden shadow-card border border-[#B8ADA0]">
                 <Image
                   src={image}
                   alt={imageAlt || title}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 550px"
-                  className="object-cover filter contrast-[1.02]"
+                  className="object-cover filter contrast-[1.02] brightness-[0.96]"
                 />
                 {badge && (
-                  <div className="absolute top-4 right-4 bg-ivory/95 backdrop-blur-sm px-3.5 py-1.5 text-[10px] uppercase tracking-[0.2em] text-espresso font-medium border border-espresso/10 shadow-sm flex items-center gap-1.5">
+                  <div className="absolute top-4 right-4 bg-[#DCD4C8]/95 backdrop-blur-sm px-3.5 py-1.5 text-[10px] uppercase tracking-[0.2em] text-espresso font-medium border border-[#B8ADA0] shadow-sm flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-sage" />
                     <span>{badge}</span>
                   </div>

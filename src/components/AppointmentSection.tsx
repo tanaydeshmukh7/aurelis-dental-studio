@@ -111,7 +111,7 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
   };
 
   return (
-    <section id="book" className="py-24 sm:py-32 bg-ivory border-t border-espresso/10">
+    <section id="book" className="py-24 sm:py-32 bg-[#302D28] text-[#F0E9DF] border-t border-[#514A41]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
@@ -120,17 +120,17 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
             <div>
               <div className="flex items-center gap-2.5 mb-3">
                 <span className="w-5 h-[1.5px] bg-sage" />
-                <span className="text-[11px] tracking-[0.25em] text-taupe uppercase font-semibold">
+                <span className="text-[11px] tracking-[0.25em] text-[#C6BCAE] uppercase font-semibold">
                   PRIVATE RESERVATIONS
                 </span>
               </div>
 
-              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-espresso font-normal tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#F0E9DF] font-normal tracking-tight">
                 Your smile deserves <br />
                 <span className="italic font-light">thoughtful care.</span>
               </h2>
 
-              <p className="mt-6 text-base sm:text-lg text-taupe leading-relaxed">
+              <p className="mt-6 text-base sm:text-lg text-[#C6BCAE] leading-relaxed">
                 Take the first step toward a more confident, comfortable dental experience.
                 Reserve a private consultation at our Koregaon Park studio.
               </p>
@@ -138,7 +138,7 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
               <div className="mt-4 flex items-center gap-3">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] font-medium text-espresso hover:text-sage transition-colors border-b border-espresso/20 pb-0.5"
+                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] font-medium text-[#F0E9DF] hover:text-sage transition-colors border-b border-[#514A41] pb-0.5"
                 >
                   <span>Or Contact Our Concierge Team</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-sage" />
@@ -146,44 +146,44 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
               </div>
 
               {/* Clinic Standards */}
-              <div className="mt-10 space-y-4 border-t border-espresso/10 pt-8">
+              <div className="mt-10 space-y-4 border-t border-[#514A41] pt-8">
                 <div className="flex items-start gap-3">
-                  <span className="w-6 h-6 rounded-full bg-sand/50 flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="w-6 h-6 rounded-full bg-[#24221F] border border-[#514A41] flex items-center justify-center shrink-0 mt-0.5">
                     <Clock className="w-3.5 h-3.5 text-sage" />
                   </span>
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-espresso">
+                    <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-[#F0E9DF]">
                       Unhurried Dedication
                     </h3>
-                    <p className="text-xs text-taupe mt-0.5">
+                    <p className="text-xs text-[#C6BCAE] mt-0.5">
                       Each consultation is reserved exclusively for you, with zero double-booking.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="w-6 h-6 rounded-full bg-sand/50 flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="w-6 h-6 rounded-full bg-[#24221F] border border-[#514A41] flex items-center justify-center shrink-0 mt-0.5">
                     <Calendar className="w-3.5 h-3.5 text-sage" />
                   </span>
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-espresso">
+                    <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-[#F0E9DF]">
                       Bespoke Planning
                     </h3>
-                    <p className="text-xs text-taupe mt-0.5">
+                    <p className="text-xs text-[#C6BCAE] mt-0.5">
                       Includes 3D intraoral imagery review and itemised written roadmap.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="w-6 h-6 rounded-full bg-sand/50 flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="w-6 h-6 rounded-full bg-[#24221F] border border-[#514A41] flex items-center justify-center shrink-0 mt-0.5">
                     <Shield className="w-3.5 h-3.5 text-sage" />
                   </span>
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-espresso">
+                    <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-[#F0E9DF]">
                       Complete Privacy
                     </h3>
-                    <p className="text-xs text-taupe mt-0.5">
+                    <p className="text-xs text-[#C6BCAE] mt-0.5">
                       Your personal and diagnostic records remain strictly confidential.
                     </p>
                   </div>
@@ -192,17 +192,17 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
             </div>
 
             {/* Direct Assistance Card */}
-            <div className="mt-12 p-6 bg-sand/30 border border-espresso/10 border-l-2 border-l-sage">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-sage-dark font-semibold block mb-1">
+            <div className="mt-12 p-6 bg-[#24221F] border border-[#514A41] border-l-2 border-l-sage">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-sage font-semibold block mb-1">
                 Prefer immediate messaging?
               </span>
-              <p className="text-xs text-taupe">
+              <p className="text-xs text-[#C6BCAE]">
                 You can reach our concierge on WhatsApp at{" "}
                 <a
                   href="https://wa.me/919876543210"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-espresso underline hover:text-sage-dark"
+                  className="font-medium text-[#F0E9DF] underline hover:text-sage"
                 >
                   +91 98765 43210
                 </a>{" "}
@@ -212,18 +212,18 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
           </div>
 
           {/* Right Column: Appointment Form */}
-          <div className="lg:col-span-7 bg-ivory p-6 sm:p-10 lg:p-12 border border-espresso/10 shadow-card">
+          <div className="lg:col-span-7 bg-[#24221F] p-6 sm:p-10 lg:p-12 border border-[#514A41] shadow-card">
             
             {serverError && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+              <div className="mb-6 p-4 bg-red-950/80 border border-red-800 text-red-200 text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
                 <span>{serverError}</span>
               </div>
             )}
 
             {isSubmitted && submittedData ? (
               <div className="py-8 text-center space-y-6 animate-fade-in">
-                <div className="w-16 h-16 bg-sand/40 mx-auto flex items-center justify-center border border-sage/40 rounded-full">
+                <div className="w-16 h-16 bg-[#302D28] mx-auto flex items-center justify-center border border-sage/40 rounded-full">
                   <CheckCircle2 className="w-8 h-8 text-sage" />
                 </div>
 
@@ -231,22 +231,22 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                   <span className="text-[11px] uppercase tracking-[0.25em] text-sage font-semibold">
                     Consultation Request Confirmed
                   </span>
-                  <h3 className="font-serif text-3xl sm:text-4xl text-espresso font-normal">
+                  <h3 className="font-serif text-3xl sm:text-4xl text-[#F0E9DF] font-normal">
                     Thank you, {submittedData.fullName}.
                   </h3>
-                  <p className="text-sm text-taupe max-w-md mx-auto leading-relaxed">
+                  <p className="text-sm text-[#C6BCAE] max-w-md mx-auto leading-relaxed">
                     Your appointment request has been logged directly into our clinical management system.
                     Our concierge coordinator will contact you via phone or WhatsApp to finalize your private operatory reservation.
                   </p>
                 </div>
 
                 {referenceId && (
-                  <div className="inline-block px-4 py-2 bg-[#F7F5F0] border border-[#86A58C] text-[#28231F] font-mono text-sm font-semibold rounded-lg">
+                  <div className="inline-block px-4 py-2 bg-[#1C1A17] border border-sage text-[#F0E9DF] font-mono text-sm font-semibold rounded-lg">
                     Reservation Ref: {referenceId}
                   </div>
                 )}
 
-                <div className="p-5 bg-sand/20 border border-espresso/10 text-left text-xs space-y-2 max-w-md mx-auto text-espresso/90">
+                <div className="p-5 bg-[#1C1A17] border border-[#514A41] text-left text-xs space-y-2 max-w-md mx-auto text-[#F0E9DF]">
                   <p><strong>Selected Discipline:</strong> {submittedData.treatment}</p>
                   <p><strong>Preferred Date:</strong> {submittedData.preferredDate}</p>
                   <p><strong>Preferred Window:</strong> {submittedData.preferredTime}</p>
@@ -257,7 +257,7 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="px-6 py-3 border border-espresso text-xs uppercase tracking-[0.2em] text-espresso hover:bg-sage hover:text-white hover:border-sage transition-colors"
+                  className="px-6 py-3 border border-[#514A41] text-xs uppercase tracking-[0.2em] text-[#F0E9DF] hover:bg-sage hover:text-white hover:border-sage transition-colors bg-[#302D28]"
                 >
                   Submit Another Consultation Request
                 </button>
@@ -270,9 +270,9 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                   <div>
                     <label
                       htmlFor="fullName"
-                      className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                      className="block text-xs uppercase tracking-[0.16em] font-medium text-[#F0E9DF] mb-2"
                     >
-                      Full Name <span className="text-sage-dark">*</span>
+                      Full Name <span className="text-sage">*</span>
                     </label>
                     <input
                       type="text"
@@ -282,14 +282,14 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                         setFormData({ ...formData, fullName: e.target.value })
                       }
                       placeholder="e.g. Meera Deshmukh"
-                      className={`w-full bg-sand/20 border px-4 py-3 text-sm text-espresso placeholder:text-taupe/60 focus:bg-white focus:outline-none transition-colors ${
+                      className={`w-full bg-[#1C1A17] border px-4 py-3 text-sm text-[#F0E9DF] placeholder:text-[#C6BCAE]/50 focus:bg-[#24221F] focus:outline-none transition-colors ${
                         errors.fullName
                           ? "border-red-400 focus:border-red-500"
-                          : "border-espresso/15 focus:border-sage"
+                          : "border-[#514A41] focus:border-sage"
                       }`}
                     />
                     {errors.fullName && (
-                      <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
+                      <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         <span>{errors.fullName}</span>
                       </p>
@@ -299,9 +299,9 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                      className="block text-xs uppercase tracking-[0.16em] font-medium text-[#F0E9DF] mb-2"
                     >
-                      Phone Number <span className="text-sage-dark">*</span>
+                      Phone Number <span className="text-sage">*</span>
                     </label>
                     <input
                       type="tel"
@@ -311,14 +311,14 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                         setFormData({ ...formData, phone: e.target.value })
                       }
                       placeholder="+91 98220 XXXXX"
-                      className={`w-full bg-sand/20 border px-4 py-3 text-sm text-espresso placeholder:text-taupe/60 focus:bg-white focus:outline-none transition-colors ${
+                      className={`w-full bg-[#1C1A17] border px-4 py-3 text-sm text-[#F0E9DF] placeholder:text-[#C6BCAE]/50 focus:bg-[#24221F] focus:outline-none transition-colors ${
                         errors.phone
                           ? "border-red-400 focus:border-red-500"
-                          : "border-espresso/15 focus:border-sage"
+                          : "border-[#514A41] focus:border-sage"
                       }`}
                     />
                     {errors.phone && (
-                      <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
+                      <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         <span>{errors.phone}</span>
                       </p>
@@ -331,9 +331,9 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                      className="block text-xs uppercase tracking-[0.16em] font-medium text-[#F0E9DF] mb-2"
                     >
-                      Email Address <span className="text-taupe text-[10px] font-normal">(Optional)</span>
+                      Email Address <span className="text-[#C6BCAE] text-[10px] font-normal">(Optional)</span>
                     </label>
                     <input
                       type="email"
@@ -343,14 +343,14 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                         setFormData({ ...formData, email: e.target.value })
                       }
                       placeholder="meera@domain.com"
-                      className={`w-full bg-sand/20 border px-4 py-3 text-sm text-espresso placeholder:text-taupe/60 focus:bg-white focus:outline-none transition-colors ${
+                      className={`w-full bg-[#1C1A17] border px-4 py-3 text-sm text-[#F0E9DF] placeholder:text-[#C6BCAE]/50 focus:bg-[#24221F] focus:outline-none transition-colors ${
                         errors.email
                           ? "border-red-400 focus:border-red-500"
-                          : "border-espresso/15 focus:border-sage"
+                          : "border-[#514A41] focus:border-sage"
                       }`}
                     />
                     {errors.email && (
-                      <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
+                      <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         <span>{errors.email}</span>
                       </p>
@@ -360,7 +360,7 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                   <div>
                     <label
                       htmlFor="treatment"
-                      className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                      className="block text-xs uppercase tracking-[0.16em] font-medium text-[#F0E9DF] mb-2"
                     >
                       Preferred Treatment
                     </label>
@@ -370,17 +370,17 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                       onChange={(e) =>
                         setFormData({ ...formData, treatment: e.target.value })
                       }
-                      className="w-full bg-sand/20 border border-espresso/15 px-4 py-3 text-sm text-espresso focus:bg-white focus:border-sage focus:outline-none transition-colors"
+                      className="w-full bg-[#1C1A17] border border-[#514A41] px-4 py-3 text-sm text-[#F0E9DF] focus:bg-[#24221F] focus:border-sage focus:outline-none transition-colors"
                     >
                       {TREATMENTS.map((t) => (
-                        <option key={t.id} value={t.title}>
+                        <option key={t.id} value={t.title} className="bg-[#24221F] text-[#F0E9DF]">
                           {t.title} ({t.number})
                         </option>
                       ))}
-                      <option value="General Consultation">
+                      <option value="General Consultation" className="bg-[#24221F] text-[#F0E9DF]">
                         General Consultation & Oral Wellness
                       </option>
-                      <option value="Second Opinion">
+                      <option value="Second Opinion" className="bg-[#24221F] text-[#F0E9DF]">
                         Second Opinion on Existing Plan
                       </option>
                     </select>
@@ -392,9 +392,9 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                   <div>
                     <label
                       htmlFor="preferredDate"
-                      className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                      className="block text-xs uppercase tracking-[0.16em] font-medium text-[#F0E9DF] mb-2"
                     >
-                      Preferred Date <span className="text-sage-dark">*</span>
+                      Preferred Date <span className="text-sage">*</span>
                     </label>
                     <input
                       type="date"
@@ -404,14 +404,14 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                       onChange={(e) =>
                         setFormData({ ...formData, preferredDate: e.target.value })
                       }
-                      className={`w-full bg-sand/20 border px-4 py-3 text-sm text-espresso focus:bg-white focus:outline-none transition-colors ${
+                      className={`w-full bg-[#1C1A17] border px-4 py-3 text-sm text-[#F0E9DF] focus:bg-[#24221F] focus:outline-none transition-colors ${
                         errors.preferredDate
                           ? "border-red-400 focus:border-red-500"
-                          : "border-espresso/15 focus:border-sage"
+                          : "border-[#514A41] focus:border-sage"
                       }`}
                     />
                     {errors.preferredDate && (
-                      <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
+                      <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         <span>{errors.preferredDate}</span>
                       </p>
@@ -421,7 +421,7 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                   <div>
                     <label
                       htmlFor="preferredTime"
-                      className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                      className="block text-xs uppercase tracking-[0.16em] font-medium text-[#F0E9DF] mb-2"
                     >
                       Preferred Window
                     </label>
@@ -431,15 +431,15 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                       onChange={(e) =>
                         setFormData({ ...formData, preferredTime: e.target.value })
                       }
-                      className="w-full bg-sand/20 border border-espresso/15 px-4 py-3 text-sm text-espresso focus:bg-white focus:border-sage focus:outline-none transition-colors"
+                      className="w-full bg-[#1C1A17] border border-[#514A41] px-4 py-3 text-sm text-[#F0E9DF] focus:bg-[#24221F] focus:border-sage focus:outline-none transition-colors"
                     >
-                      <option value="Morning (10:00 AM – 01:00 PM)">
+                      <option value="Morning (10:00 AM – 01:00 PM)" className="bg-[#24221F] text-[#F0E9DF]">
                         Morning (10:00 AM – 01:00 PM)
                       </option>
-                      <option value="Afternoon (01:00 PM – 04:30 PM)">
+                      <option value="Afternoon (01:00 PM – 04:30 PM)" className="bg-[#24221F] text-[#F0E9DF]">
                         Afternoon (01:00 PM – 04:30 PM)
                       </option>
-                      <option value="Evening (04:30 PM – 07:30 PM)">
+                      <option value="Evening (04:30 PM – 07:30 PM)" className="bg-[#24221F] text-[#F0E9DF]">
                         Evening (04:30 PM – 07:30 PM)
                       </option>
                     </select>
@@ -450,9 +450,9 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-2"
+                    className="block text-xs uppercase tracking-[0.16em] font-medium text-[#F0E9DF] mb-2"
                   >
-                    Additional Notes or Sensitivities <span className="text-taupe text-[10px] font-normal">(Optional)</span>
+                    Additional Notes or Sensitivities <span className="text-[#C6BCAE] text-[10px] font-normal">(Optional)</span>
                   </label>
                   <textarea
                     id="message"
@@ -462,7 +462,7 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                       setFormData({ ...formData, message: e.target.value })
                     }
                     placeholder="Tell us if you experience dental apprehension, sensitivity, or have specific goals..."
-                    className="w-full bg-sand/20 border border-espresso/15 px-4 py-3 text-sm text-espresso placeholder:text-taupe/60 focus:bg-white focus:border-sage focus:outline-none transition-colors"
+                    className="w-full bg-[#1C1A17] border border-[#514A41] px-4 py-3 text-sm text-[#F0E9DF] placeholder:text-[#C6BCAE]/50 focus:bg-[#24221F] focus:border-sage focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -477,14 +477,14 @@ export default function AppointmentSection({ initialTreatment }: AppointmentSect
                       }
                       className="mt-1 w-4 h-4 rounded-none accent-sage focus:ring-sage"
                     />
-                    <span className="text-xs text-taupe leading-relaxed">
+                    <span className="text-xs text-[#C6BCAE] leading-relaxed">
                       I agree to allow AURELIS Dental Studio to contact me via phone or
                       message regarding my consultation request. Information is handled
                       with strict medical confidentiality.
                     </span>
                   </label>
                   {errors.privacyConsent && (
-                    <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
+                    <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" />
                       <span>{errors.privacyConsent}</span>
                     </p>

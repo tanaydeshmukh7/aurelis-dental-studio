@@ -9,14 +9,14 @@ export default function SiteFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-espresso-dark text-ivory pt-24 pb-14 border-t border-white/10 relative overflow-hidden">
+    <footer className="bg-[#24221F] text-[#F0E9DF] pt-24 pb-14 border-t border-[#514A41] relative overflow-hidden">
       {/* Decorative hairline graphic with sage and champagne subtle accent */}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-sage/40 to-transparent mb-16" />
       </div>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-14 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-14 pb-16 border-b border-[#514A41]">
           
           {/* Brand & Editorial Statement (Col 1-5) */}
           <div className="lg:col-span-5 flex flex-col justify-between">
@@ -36,7 +36,7 @@ export default function SiteFooter() {
               </p>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-white/10 space-y-2.5">
+            <div className="mt-8 pt-6 border-t border-[#514A41] space-y-2.5">
               <div className="flex items-start gap-2.5 text-xs text-white/80">
                 <MapPin className="w-4 h-4 text-sage shrink-0 mt-0.5" />
                 <span>

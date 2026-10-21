@@ -6,7 +6,7 @@ export default function LocationSection() {
   const whatsappUrl = `https://wa.me/${CLINIC_CONTACT.whatsappNumber}?text=Hello%20Aurelis%20Dental%20Studio,%20I%20would%20like%20to%20inquire%20about%20a%20consultation.`;
 
   return (
-    <section id="contact" className="py-24 sm:py-32 bg-sand/30 border-t border-espresso/10">
+    <section id="contact" className="py-24 sm:py-32 bg-[#DCD4C8] border-t border-[#B8ADA0]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* Section Header */}
@@ -30,7 +30,7 @@ export default function LocationSection() {
         </div>
 
         {/* Demo Notice Banner */}
-        <div className="mb-10 p-4 bg-ivory border border-espresso/10 flex items-center justify-between text-xs text-taupe">
+        <div className="mb-10 p-4 bg-[#CFC5B7] border border-[#B8ADA0] flex items-center justify-between text-xs text-taupe">
           <span className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-sage" />
             <span>
@@ -43,7 +43,7 @@ export default function LocationSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
           
           {/* Contact & Hours Details Column */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-8 bg-ivory p-8 sm:p-10 border border-espresso/10 shadow-card">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-8 bg-[#CFC5B7] p-8 sm:p-10 border border-[#B8ADA0] shadow-card">
             
             <div className="space-y-6">
               {/* Address */}
@@ -58,13 +58,13 @@ export default function LocationSection() {
                 <p className="text-sm text-taupe mt-0.5">
                   {CLINIC_CONTACT.address.line2}, {CLINIC_CONTACT.address.state}
                 </p>
-                <p className="text-xs text-taupe/80 mt-2 italic leading-relaxed">
+                <p className="text-xs text-taupe mt-2 italic leading-relaxed">
                   {CLINIC_CONTACT.address.directionsNote}
                 </p>
               </div>
 
               {/* Clinic Timings */}
-              <div className="pt-6 border-t border-espresso/10">
+              <div className="pt-6 border-t border-[#B8ADA0]">
                 <div className="flex items-center gap-2 text-sage text-xs uppercase tracking-[0.18em] font-semibold mb-3">
                   <Clock className="w-4 h-4" />
                   <span>Studio Hours</span>
@@ -80,7 +80,7 @@ export default function LocationSection() {
               </div>
 
               {/* Direct Channels */}
-              <div className="pt-6 border-t border-espresso/10 space-y-3">
+              <div className="pt-6 border-t border-[#B8ADA0] space-y-3">
                 <div className="flex items-center gap-3 text-xs sm:text-sm text-espresso">
                   <Phone className="w-4 h-4 text-sage shrink-0" />
                   <span>{CLINIC_CONTACT.phoneDisplay}</span>
@@ -93,7 +93,7 @@ export default function LocationSection() {
             </div>
 
             {/* Quick Action Links */}
-            <div className="pt-6 border-t border-espresso/10 flex flex-wrap gap-4">
+            <div className="pt-6 border-t border-[#B8ADA0] flex flex-wrap gap-4">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -108,7 +108,7 @@ export default function LocationSection() {
                 href={mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 border border-espresso text-espresso hover:border-sage hover:text-sage-dark hover:bg-sand/30 text-xs uppercase tracking-[0.18em] font-medium transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-3 border border-[#B8ADA0] text-espresso hover:border-sage hover:text-sage-dark hover:bg-stone-dark/30 text-xs uppercase tracking-[0.18em] font-medium transition-colors bg-stone/40"
               >
                 <Navigation className="w-4 h-4" />
                 <span>Get Directions</span>
@@ -118,8 +118,8 @@ export default function LocationSection() {
           </div>
 
           {/* Interactive Map Visual Frame */}
-          <div className="lg:col-span-7 bg-ivory border border-espresso/10 p-4 sm:p-6 shadow-card flex flex-col justify-between">
-            <div className="relative w-full h-80 sm:h-96 lg:h-full min-h-[340px] bg-sand overflow-hidden">
+          <div className="lg:col-span-7 bg-[#CFC5B7] border border-[#B8ADA0] p-4 sm:p-6 shadow-card flex flex-col justify-between">
+            <div className="relative w-full h-80 sm:h-96 lg:h-full min-h-[340px] bg-stone-dark overflow-hidden border border-[#B8ADA0]">
               <iframe
                 title="AURELIS Dental Studio Koregaon Park Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15131.644146011409!2d73.88565435000001!3d18.536754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c05763b65555%3A0xa971912f7a08b53e!2sKoregaon%20Park%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
@@ -130,7 +130,7 @@ export default function LocationSection() {
               />
 
               {/* Floating Overlay Badge on Map */}
-              <div className="absolute top-4 left-4 bg-ivory/95 backdrop-blur-sm p-3.5 border border-espresso/15 shadow-md max-w-xs">
+              <div className="absolute top-4 left-4 bg-[#DCD4C8]/95 backdrop-blur-sm p-3.5 border border-[#B8ADA0] shadow-md max-w-xs">
                 <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-sage-dark flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-sage" />
                   <span>Koregaon Park, Pune</span>

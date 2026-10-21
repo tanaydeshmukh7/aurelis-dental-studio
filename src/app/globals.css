@@ -3,15 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --color-ivory: #F7F5F0;
-  --color-sand: #E9E2D7;
+  /* Muted Luxury Darkened Palette Tokens */
+  --color-stone: #DCD4C8;
+  --color-stone-secondary: #CFC5B7;
+  --color-stone-muted: #BEB2A2;
+  --color-dark-section: #302D28;
+  --color-deep-espresso: #24221F;
+  --color-text-light: #28231F;
+  --color-text-secondary-light: #514A42;
+  --color-text-dark: #F0E9DF;
+  --color-text-secondary-dark: #C6BCAE;
+  --color-border-light: #B8ADA0;
+  --color-border-dark: #514A41;
   --color-sage: #86A58C;
-  --color-sage-dark: #6F8E75;
-  --color-sage-light: #A1BCAB;
+  --color-sage-dark: #66866D;
   --color-champagne: #B69A72;
-  --color-espresso: #28231F;
-  --color-taupe: #82786E;
-  --color-white: #FFFFFF;
 
   --font-heading: var(--font-cormorant);
   --font-body: var(--font-dm-sans);
@@ -25,7 +31,7 @@ html {
 }
 
 body {
-  background-color: #F7F5F0;
+  background-color: #DCD4C8;
   color: #28231F;
   overflow-x: hidden;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -33,7 +39,7 @@ body {
 
 ::selection {
   background-color: #86A58C;
-  color: #FFFFFF;
+  color: #F0E9DF;
 }
 
 /* Subtle luxury scrollbar */
@@ -42,16 +48,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F7F5F0;
+  background: #DCD4C8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D4C5B0;
+  background: #BEB2A2;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #86A58C;
+  background: #66866D;
 }
 
 /* Accessible focus ring in brand sage */
@@ -62,27 +68,27 @@ body {
 
 /* Editorial line decorations */
 .hairline-b {
-  border-bottom: 1px solid rgba(40, 35, 31, 0.08);
+  border-bottom: 1px solid #B8ADA0;
 }
 
 .hairline-t {
-  border-top: 1px solid rgba(40, 35, 31, 0.08);
+  border-top: 1px solid #B8ADA0;
 }
 
 .hairline-l {
-  border-left: 1px solid rgba(40, 35, 31, 0.08);
+  border-left: 1px solid #B8ADA0;
 }
 
 .hairline-r {
-  border-right: 1px solid rgba(40, 35, 31, 0.08);
+  border-right: 1px solid #B8ADA0;
 }
 
 .hairline-dark-b {
-  border-bottom: 1px solid rgba(247, 245, 240, 0.12);
+  border-bottom: 1px solid #514A41;
 }
 
 .hairline-dark-t {
-  border-top: 1px solid rgba(247, 245, 240, 0.12);
+  border-top: 1px solid #514A41;
 }
 
 /* Reduced motion preference */

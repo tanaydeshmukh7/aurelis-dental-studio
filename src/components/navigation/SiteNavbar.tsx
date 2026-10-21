@@ -43,8 +43,8 @@ export default function SiteNavbar({ onOpenBookingModal }: SiteNavbarProps) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-ivory/95 backdrop-blur-md border-b border-espresso/10 py-3.5 shadow-subtle"
-            : "bg-ivory/90 backdrop-blur-sm border-b border-espresso/8 py-4 sm:py-5"
+            ? "bg-stone/95 backdrop-blur-md border-b border-stone-border py-3.5 shadow-subtle"
+            : "bg-stone/90 backdrop-blur-sm border-b border-stone-border/80 py-4 sm:py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between gap-4">
@@ -100,8 +100,8 @@ export default function SiteNavbar({ onOpenBookingModal }: SiteNavbarProps) {
                           : "opacity-0 -translate-y-2 pointer-events-none"
                       }`}
                     >
-                      <div className="bg-ivory shadow-float border border-espresso/10 p-3 space-y-1">
-                        <div className="px-3 py-1.5 border-b border-espresso/8 mb-1 flex items-center justify-between">
+                      <div className="bg-stone shadow-float border border-stone-border p-3 space-y-1">
+                        <div className="px-3 py-1.5 border-b border-stone-border mb-1 flex items-center justify-between">
                           <span className="text-[9px] uppercase tracking-[0.2em] text-taupe font-semibold">
                             Clinical Disciplines
                           </span>
@@ -112,7 +112,7 @@ export default function SiteNavbar({ onOpenBookingModal }: SiteNavbarProps) {
                         <Link
                           href="/treatments"
                           onClick={() => setDropdownOpen(false)}
-                          className="block px-3 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-espresso hover:bg-sand/40 hover:text-sage-dark transition-colors"
+                          className="block px-3 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-espresso hover:bg-stone-dark/50 hover:text-sage-dark transition-colors"
                         >
                           All Treatments Overview ↗
                         </Link>
@@ -121,7 +121,7 @@ export default function SiteNavbar({ onOpenBookingModal }: SiteNavbarProps) {
                             key={t.id}
                             href={`/treatments/${t.slug}`}
                             onClick={() => setDropdownOpen(false)}
-                            className="block px-3 py-1.5 text-xs text-taupe hover:text-espresso hover:bg-sand/30 transition-colors"
+                            className="block px-3 py-1.5 text-xs text-taupe hover:text-espresso hover:bg-stone-dark/40 transition-colors"
                           >
                             <span className="font-serif mr-1.5 text-sage">
                               {t.number}.
@@ -177,7 +177,7 @@ export default function SiteNavbar({ onOpenBookingModal }: SiteNavbarProps) {
             {/* Mobile / Tablet Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="xl:hidden inline-flex items-center gap-2 px-3 sm:px-3.5 py-2 border border-espresso/20 hover:border-sage text-xs uppercase tracking-[0.18em] font-medium text-espresso bg-ivory/80 hover:bg-sand/30 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage"
+              className="xl:hidden inline-flex items-center gap-2 px-3 sm:px-3.5 py-2 border border-stone-border hover:border-sage text-xs uppercase tracking-[0.18em] font-medium text-espresso bg-stone-dark/50 hover:bg-stone-dark transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage"
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
             >

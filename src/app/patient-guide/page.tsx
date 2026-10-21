@@ -45,7 +45,7 @@ export default function PatientGuidePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-ivory text-espresso flex flex-col">
+    <div className="min-h-screen bg-[#DCD4C8] text-espresso flex flex-col">
       <SiteNavbar />
 
       <main className="flex-1">
@@ -61,7 +61,7 @@ export default function PatientGuidePage() {
         />
 
         {/* First Visit Roadmap */}
-        <section className="py-20 sm:py-28 bg-ivory">
+        <section className="py-20 sm:py-28 bg-[#DCD4C8]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
             <div className="max-w-3xl mb-14">
               <span className="text-[10px] uppercase tracking-[0.25em] text-sage-dark font-semibold block mb-2">
@@ -77,7 +77,7 @@ export default function PatientGuidePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-sand/20 border border-espresso/10 p-8 flex flex-col justify-between border-t-2 border-t-sage">
+              <div className="bg-[#CFC5B7] border border-[#B8ADA0] p-8 flex flex-col justify-between border-t-2 border-t-sage shadow-card">
                 <div>
                   <span className="font-serif text-3xl text-sage font-light block mb-3">
                     01
@@ -89,12 +89,12 @@ export default function PatientGuidePage() {
                     Over a warm drink in our private lounge, we discuss your goals, past dental experiences, and any sensitivities.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-espresso/8 text-[11px] text-taupe">
+                <div className="mt-6 pt-4 border-t border-[#B8ADA0] text-[11px] text-taupe">
                   Approx. 15 minutes
                 </div>
               </div>
 
-              <div className="bg-sand/20 border border-espresso/10 p-8 flex flex-col justify-between border-t-2 border-t-sage">
+              <div className="bg-[#CFC5B7] border border-[#B8ADA0] p-8 flex flex-col justify-between border-t-2 border-t-sage shadow-card">
                 <div>
                   <span className="font-serif text-3xl text-sage font-light block mb-3">
                     02
@@ -106,12 +106,12 @@ export default function PatientGuidePage() {
                     Optical intraoral scan, high-definition photography, and gentle periodontal screening with zero discomfort.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-espresso/8 text-[11px] text-taupe">
+                <div className="mt-6 pt-4 border-t border-[#B8ADA0] text-[11px] text-taupe">
                   Approx. 15 minutes
                 </div>
               </div>
 
-              <div className="bg-sand/20 border border-espresso/10 p-8 flex flex-col justify-between border-t-2 border-t-sage">
+              <div className="bg-[#CFC5B7] border border-[#B8ADA0] p-8 flex flex-col justify-between border-t-2 border-t-sage shadow-card">
                 <div>
                   <span className="font-serif text-3xl text-sage font-light block mb-3">
                     03
@@ -123,7 +123,7 @@ export default function PatientGuidePage() {
                     We review the scans together on large screens, explaining options, timelines, and exact fees before any procedure begins.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-espresso/8 text-[11px] text-taupe">
+                <div className="mt-6 pt-4 border-t border-[#B8ADA0] text-[11px] text-taupe">
                   Approx. 15 minutes
                 </div>
               </div>
@@ -132,27 +132,27 @@ export default function PatientGuidePage() {
         </section>
 
         {/* Preparation Tips Checklist */}
-        <section className="py-20 bg-sand/30 border-y border-espresso/10">
+        <section className="py-20 bg-[#302D28] text-[#F0E9DF] border-y border-[#514A41]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
             <div className="max-w-3xl mb-12">
-              <span className="text-[10px] uppercase tracking-[0.25em] text-sage-dark font-semibold block mb-2">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-sage font-semibold block mb-2">
                 BEFORE YOUR VISIT
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-espresso font-normal">
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#F0E9DF] font-normal">
                 How to prepare.
               </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {preparationTips.map((tip, i) => (
-                <div key={i} className="bg-ivory p-6 sm:p-8 border border-espresso/10 shadow-subtle">
+                <div key={i} className="bg-[#24221F] p-6 sm:p-8 border border-[#514A41] shadow-card">
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-sage shrink-0 mt-0.5" />
                     <div>
-                      <h3 className="font-serif text-lg text-espresso font-normal">
+                      <h3 className="font-serif text-lg text-[#F0E9DF] font-normal">
                         {tip.title}
                       </h3>
-                      <p className="mt-2 text-xs sm:text-sm text-taupe leading-relaxed">
+                      <p className="mt-2 text-xs sm:text-sm text-[#C6BCAE] leading-relaxed">
                         {tip.description}
                       </p>
                     </div>
@@ -164,7 +164,7 @@ export default function PatientGuidePage() {
         </section>
 
         {/* Comfort Amenities Showcase */}
-        <section className="py-20 sm:py-28 bg-ivory">
+        <section className="py-20 sm:py-28 bg-[#DCD4C8]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <span className="text-[10px] uppercase tracking-[0.25em] text-sage-dark font-semibold block mb-2">
@@ -177,7 +177,7 @@ export default function PatientGuidePage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {comfortAmenities.map((amenity, i) => (
-                <div key={i} className="p-6 bg-sand/20 border border-espresso/8 space-y-2">
+                <div key={i} className="p-6 bg-[#CFC5B7] border border-[#B8ADA0] space-y-2 shadow-subtle">
                   <span className="w-1.5 h-1.5 rounded-full bg-sage inline-block mb-1" />
                   <h3 className="font-serif text-lg text-espresso font-normal">
                     {amenity.title}
@@ -192,24 +192,24 @@ export default function PatientGuidePage() {
         </section>
 
         {/* Patient FAQs */}
-        <section className="py-20 bg-sand/30 border-t border-espresso/10">
+        <section className="py-20 bg-[#302D28] text-[#F0E9DF] border-t border-[#514A41]">
           <div className="max-w-4xl mx-auto px-5 sm:px-8">
             <div className="text-center mb-12">
-              <span className="text-[10px] uppercase tracking-[0.25em] text-taupe font-semibold block mb-2">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-sage font-semibold block mb-2">
                 COMMON INQUIRIES
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-espresso font-normal">
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#F0E9DF] font-normal">
                 First appointment questions.
               </h2>
             </div>
 
             <div className="space-y-4">
               {FAQS.slice(0, 4).map((faq) => (
-                <div key={faq.id} className="p-6 bg-ivory border border-espresso/10">
-                  <h3 className="font-serif text-lg text-espresso font-normal">
+                <div key={faq.id} className="p-6 bg-[#24221F] border border-[#514A41]">
+                  <h3 className="font-serif text-lg text-[#F0E9DF] font-normal">
                     {faq.question}
                   </h3>
-                  <p className="mt-2 text-xs sm:text-sm text-taupe leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-sm text-[#C6BCAE] leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>

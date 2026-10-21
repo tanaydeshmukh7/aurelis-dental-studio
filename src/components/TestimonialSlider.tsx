@@ -23,11 +23,11 @@ export default function TestimonialSlider() {
   const item = DEMO_TESTIMONIALS[currentIndex];
 
   return (
-    <section className="py-24 sm:py-32 bg-ivory border-t border-espresso/10">
+    <section className="py-24 sm:py-32 bg-[#DCD4C8] border-t border-[#B8ADA0]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 sm:mb-20 pb-8 border-b border-espresso/10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 sm:mb-20 pb-8 border-b border-[#B8ADA0]">
           <div>
             <div className="flex items-center gap-2.5 mb-3">
               <span className="w-5 h-[1.5px] bg-sage" />
@@ -41,14 +41,14 @@ export default function TestimonialSlider() {
           </div>
 
           {/* Development Demo Notice Badge */}
-          <div className="mt-4 sm:mt-0 bg-sand/50 px-3.5 py-1.5 border border-espresso/10 text-[10px] text-taupe uppercase tracking-[0.18em] flex items-center gap-1.5">
+          <div className="mt-4 sm:mt-0 bg-[#CFC5B7] px-3.5 py-1.5 border border-[#B8ADA0] text-[10px] text-taupe uppercase tracking-[0.18em] flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-sage" />
             <span>Demo Review Showcase · Koregaon Park</span>
           </div>
         </div>
 
         {/* Testimonial Stage */}
-        <div className="relative max-w-4xl mx-auto bg-sand/20 border border-espresso/10 p-8 sm:p-14 lg:p-16 shadow-subtle">
+        <div className="relative max-w-4xl mx-auto bg-[#CFC5B7] border border-[#B8ADA0] p-8 sm:p-14 lg:p-16 shadow-card">
           
           <Quote className="w-10 h-10 sm:w-14 sm:h-14 text-sage/40 mb-6" />
 
@@ -65,7 +65,7 @@ export default function TestimonialSlider() {
           </blockquote>
 
           {/* Author Details and Navigation Controls */}
-          <div className="mt-10 pt-8 border-t border-espresso/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div className="mt-10 pt-8 border-t border-[#B8ADA0] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div>
               <p className="font-serif text-lg sm:text-xl text-espresso font-normal">
                 {item.author}
@@ -82,7 +82,7 @@ export default function TestimonialSlider() {
               <button
                 onClick={prev}
                 aria-label="Previous patient story"
-                className="w-11 h-11 border border-espresso/20 flex items-center justify-center text-espresso hover:border-sage hover:text-sage transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sage"
+                className="w-11 h-11 border border-[#B8ADA0] flex items-center justify-center text-espresso hover:border-sage hover:text-sage transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sage bg-stone/40"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -97,7 +97,7 @@ export default function TestimonialSlider() {
               <button
                 onClick={next}
                 aria-label="Next patient story"
-                className="w-11 h-11 border border-espresso/20 flex items-center justify-center text-espresso hover:border-sage hover:text-sage transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sage"
+                className="w-11 h-11 border border-[#B8ADA0] flex items-center justify-center text-espresso hover:border-sage hover:text-sage transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sage bg-stone/40"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>

@@ -72,22 +72,22 @@ export default function ContactInquiryForm() {
   };
 
   return (
-    <div className="bg-sand/20 border border-espresso/10 p-6 sm:p-8 shadow-card">
+    <div className="bg-[#CFC5B7]/50 border border-[#B8ADA0] p-6 sm:p-8 shadow-card">
       <div className="flex items-center gap-2 mb-2">
-        <MessageSquare className="w-4 h-4 text-sage" />
-        <span className="text-[10px] uppercase tracking-[0.2em] text-sage font-semibold">
+        <MessageSquare className="w-4 h-4 text-[#66866D]" />
+        <span className="text-[10px] uppercase tracking-[0.2em] text-[#66866D] font-semibold">
           DIRECT STUDIO CONCIERGE
         </span>
       </div>
-      <h3 className="font-serif text-2xl text-espresso font-normal">
+      <h3 className="font-serif text-2xl text-[#28231F] font-normal">
         Send an Unhurried Enquiry
       </h3>
-      <p className="text-xs text-taupe mt-1 mb-6">
+      <p className="text-xs text-[#514A42] mt-1 mb-6">
         Have questions about clinical treatments, private consultations, or scheduling? Our concierge team responds promptly.
       </p>
 
       {error && (
-        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2">
+        <div className="mb-4 p-3 bg-red-950/20 border border-red-500/40 text-xs text-red-800 flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{error}</span>
         </div>
@@ -95,23 +95,23 @@ export default function ContactInquiryForm() {
 
       {isSubmitted ? (
         <div className="py-6 text-center space-y-4">
-          <div className="w-12 h-12 bg-sand/40 mx-auto flex items-center justify-center border border-sage/40 rounded-full">
-            <CheckCircle2 className="w-6 h-6 text-sage" />
+          <div className="w-12 h-12 bg-[#DCD4C8] mx-auto flex items-center justify-center border border-[#66866D]/40 rounded-full">
+            <CheckCircle2 className="w-6 h-6 text-[#66866D]" />
           </div>
-          <h4 className="font-serif text-xl text-espresso">
+          <h4 className="font-serif text-xl text-[#28231F]">
             Thank you, {formData.name}
           </h4>
           {referenceId && (
-            <div className="inline-block px-3 py-1 bg-sage/15 border border-sage/30 text-sage-dark text-xs font-mono font-medium">
+            <div className="inline-block px-3 py-1 bg-[#66866D]/15 border border-[#66866D]/30 text-[#66866D] text-xs font-mono font-medium">
               Reference: <span className="font-bold">{referenceId}</span>
             </div>
           )}
-          <p className="text-xs text-taupe max-w-sm mx-auto leading-relaxed">
+          <p className="text-xs text-[#514A42] max-w-sm mx-auto leading-relaxed">
             Your inquiry has been delivered directly to our front desk and lead coordinator. We look forward to connecting with you.
           </p>
           <button
             onClick={handleReset}
-            className="px-5 py-2.5 bg-sage hover:bg-sage-dark text-white text-xs uppercase tracking-[0.16em] transition-colors"
+            className="px-5 py-2.5 bg-[#66866D] hover:bg-[#86A58C] text-white text-xs uppercase tracking-[0.16em] transition-colors"
           >
             Send Another Message
           </button>
@@ -119,8 +119,8 @@ export default function ContactInquiryForm() {
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-1">
-              Full Name <span className="text-sage-dark">*</span>
+            <label className="block text-xs uppercase tracking-[0.16em] font-medium text-[#28231F] mb-1">
+              Full Name <span className="text-[#66866D]">*</span>
             </label>
             <input
               type="text"
@@ -128,13 +128,13 @@ export default function ContactInquiryForm() {
               placeholder="e.g. Rohini Deshmukh"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full bg-ivory border border-espresso/15 px-3.5 py-2.5 text-sm text-espresso focus:outline-none focus:border-sage"
+              className="w-full bg-[#DCD4C8] border border-[#B8ADA0] px-3.5 py-2.5 text-sm text-[#28231F] placeholder:text-[#514A42]/60 focus:outline-none focus:border-[#66866D]"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-1">
+              <label className="block text-xs uppercase tracking-[0.16em] font-medium text-[#28231F] mb-1">
                 Phone Number
               </label>
               <input
@@ -142,11 +142,11 @@ export default function ContactInquiryForm() {
                 placeholder="+91 98220 XXXXX"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full bg-ivory border border-espresso/15 px-3.5 py-2.5 text-sm text-espresso focus:outline-none focus:border-sage"
+                className="w-full bg-[#DCD4C8] border border-[#B8ADA0] px-3.5 py-2.5 text-sm text-[#28231F] placeholder:text-[#514A42]/60 focus:outline-none focus:border-[#66866D]"
               />
             </div>
             <div>
-              <label className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-1">
+              <label className="block text-xs uppercase tracking-[0.16em] font-medium text-[#28231F] mb-1">
                 Email Address
               </label>
               <input
@@ -154,19 +154,19 @@ export default function ContactInquiryForm() {
                 placeholder="name@domain.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-ivory border border-espresso/15 px-3.5 py-2.5 text-sm text-espresso focus:outline-none focus:border-sage"
+                className="w-full bg-[#DCD4C8] border border-[#B8ADA0] px-3.5 py-2.5 text-sm text-[#28231F] placeholder:text-[#514A42]/60 focus:outline-none focus:border-[#66866D]"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-1">
+            <label className="block text-xs uppercase tracking-[0.16em] font-medium text-[#28231F] mb-1">
               Area of Interest
             </label>
             <select
               value={formData.requestedTreatment}
               onChange={(e) => setFormData({ ...formData, requestedTreatment: e.target.value })}
-              className="w-full bg-ivory border border-espresso/15 px-3.5 py-2.5 text-sm text-espresso focus:outline-none focus:border-sage"
+              className="w-full bg-[#DCD4C8] border border-[#B8ADA0] px-3.5 py-2.5 text-sm text-[#28231F] focus:outline-none focus:border-[#66866D]"
             >
               <option value="General Enquiry">General Studio Enquiry</option>
               <option value="Smile Design">Smile Design & Aesthetic Dentistry</option>
@@ -178,8 +178,8 @@ export default function ContactInquiryForm() {
           </div>
 
           <div>
-            <label className="block text-xs uppercase tracking-[0.16em] font-medium text-espresso mb-1">
-              Your Message <span className="text-sage-dark">*</span>
+            <label className="block text-xs uppercase tracking-[0.16em] font-medium text-[#28231F] mb-1">
+              Your Message <span className="text-[#66866D]">*</span>
             </label>
             <textarea
               rows={3}
@@ -187,14 +187,14 @@ export default function ContactInquiryForm() {
               placeholder="Tell us what you are looking for, preferred consultation timings, or any specific questions..."
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full bg-ivory border border-espresso/15 px-3.5 py-2.5 text-sm text-espresso focus:outline-none focus:border-sage"
+              className="w-full bg-[#DCD4C8] border border-[#B8ADA0] px-3.5 py-2.5 text-sm text-[#28231F] placeholder:text-[#514A42]/60 focus:outline-none focus:border-[#66866D]"
             />
           </div>
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 bg-sage hover:bg-sage-dark text-white text-xs uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sage"
+            className="w-full py-3 bg-[#66866D] hover:bg-[#86A58C] active:bg-[#66866D] text-white text-xs uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sage"
           >
             {isSubmitting ? (
               <span>Sending Enquiry...</span>

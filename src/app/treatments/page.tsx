@@ -49,7 +49,7 @@ async function getTreatments(): Promise<Treatment[]> {
 export default async function TreatmentsOverviewPage() {
   const treatments = await getTreatments();
   return (
-    <div className="min-h-screen bg-ivory text-espresso flex flex-col">
+    <div className="min-h-screen bg-[#DCD4C8] text-espresso flex flex-col">
       <SiteNavbar />
 
       <main className="flex-1">
@@ -66,7 +66,7 @@ export default async function TreatmentsOverviewPage() {
         />
 
         {/* Treatment Philosophy Strip */}
-        <section className="py-12 bg-sand/30 border-b border-espresso/10">
+        <section className="py-12 bg-[#CFC5B7] border-b border-[#B8ADA0]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center sm:text-left">
             <div>
               <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-sage-dark block mb-1">
@@ -99,7 +99,7 @@ export default async function TreatmentsOverviewPage() {
         </section>
 
         {/* Detailed 5 Signature Treatments Stack */}
-        <section className="py-20 sm:py-28 bg-ivory">
+        <section className="py-20 sm:py-28 bg-[#DCD4C8]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-20">
             {treatments.map((treatment, idx) => (
               <div
@@ -115,15 +115,15 @@ export default async function TreatmentsOverviewPage() {
                     idx % 2 === 1 ? "lg:order-2" : ""
                   }`}
                 >
-                  <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full bg-sand overflow-hidden shadow-card border border-espresso/8 group">
+                  <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full bg-stone-dark overflow-hidden shadow-card border border-[#B8ADA0] group">
                     <Image
                       src={treatment.image}
                       alt={treatment.imageAlt}
                       fill
                       sizes="(max-width: 1024px) 100vw, 600px"
-                      className="object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-[1.02]"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-[1.02] brightness-[0.96]"
                     />
-                    <div className="absolute top-4 left-4 bg-ivory/95 backdrop-blur-sm px-3.5 py-1 text-[11px] font-serif italic text-espresso border border-espresso/10">
+                    <div className="absolute top-4 left-4 bg-[#DCD4C8]/95 backdrop-blur-sm px-3.5 py-1 text-[11px] font-serif italic text-espresso border border-[#B8ADA0]">
                       Protocol {treatment.number}
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export default async function TreatmentsOverviewPage() {
                       ))}
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-espresso/10 flex items-center justify-between text-xs text-taupe">
+                    <div className="mt-6 pt-4 border-t border-[#B8ADA0] flex items-center justify-between text-xs text-taupe">
                       <span className="flex items-center gap-1.5">
                         <Clock className="w-3.5 h-3.5 text-sage" />
                         <span>{treatment.timeline}</span>
@@ -186,7 +186,7 @@ export default async function TreatmentsOverviewPage() {
 
                     <Link
                       href="/book-appointment"
-                      className="px-5 py-3 border border-espresso/20 hover:border-sage text-xs uppercase tracking-[0.18em] text-taupe hover:text-espresso transition-colors"
+                      className="px-5 py-3 border border-[#B8ADA0] hover:border-sage text-xs uppercase tracking-[0.18em] text-taupe hover:text-espresso transition-colors bg-stone-dark/30"
                     >
                       Consult for this Treatment
                     </Link>
@@ -198,15 +198,15 @@ export default async function TreatmentsOverviewPage() {
         </section>
 
         {/* Consultation Callout */}
-        <section className="py-20 bg-charcoal text-ivory text-center">
+        <section className="py-20 bg-[#24221F] text-[#F0E9DF] border-t border-[#514A41] text-center">
           <div className="max-w-3xl mx-auto px-5 sm:px-8 space-y-6">
-            <span className="text-[10px] uppercase tracking-[0.25em] text-sage-light font-semibold block">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-sage font-semibold block">
               INDIVIDUAL ASSESSMENT
             </span>
-            <h2 className="font-serif text-3xl sm:text-5xl text-white font-normal">
+            <h2 className="font-serif text-3xl sm:text-5xl text-[#F0E9DF] font-normal">
               Not sure which treatment is right for you?
             </h2>
-            <p className="text-base text-white/70 leading-relaxed">
+            <p className="text-base text-[#C6BCAE] leading-relaxed">
               Every smile is unique. Our comprehensive initial consultation is dedicated
               to understanding your goals and presenting clear, biologically sound options.
             </p>
